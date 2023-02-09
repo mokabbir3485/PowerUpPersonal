@@ -1,0 +1,161 @@
+﻿
+<link href="../Content/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="../Content/assets/css/icons.css" rel="stylesheet" type="text/css" />
+<link href="../Content/assets/css/metisMenu.min.css" rel="stylesheet" type="text/css" />
+<link href="../Content/assets/css/style.css" rel="stylesheet" type="text/css" />
+<style>
+
+    @media only screen and (min-device-width : 200px) and (max-device-width : 767px) {
+        /* For mobile phones: */
+        /*   [class*="col-"] {
+            width: 100%;
+            margin: 5px;
+        }
+
+        .BtnWidth {
+            width: 100%;
+        }*/
+
+        #navigationUrlHide {
+            display: none;
+        }
+    }
+</style>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="page-title-box">
+            <div class="float-right">
+                <ol class="breadcrumb" id="navigationUrlHide">
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">Power up</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">User</a></li>
+                    <li class="breadcrumb-item active">User Dashboard</li>
+                </ol>
+            </div>
+            <h4 class="page-title">User Dashboard</h4>
+        </div><!--end page-title-box-->
+    </div><!--end col-->
+</div><!--end row-->
+<!-- end page title end breadcrumb -->
+
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card card-eco">
+            <div class="card-body" style="height:180px;">
+                <h4 class="title-text mt-0"  style="font-size:18px;">Booking </h4>
+                <!--<br />
+                <div class="d-flex justify-content-between">
+                    <h3 class="text-purple">{{TotalBooking}}</h3>
+
+                    <i class="fas fa-lock card-eco-icon bg-icon-purple align-self-center"></i>
+                </div>-->
+
+            <div class="d-flex justify-content-between">
+                <div style="padding-left: 10px;">
+                  
+                    <!--<h5 class="text-pink"><span class="text-purple">  Port : </span> 10</h5>-->
+                    <h5 style="font-size: 18px;" class="text-pink"><span class="text-purple">Total : </span> 200</h5>
+                    <h5 style="font-size: 18px;" class="text-pink"><span class="text-purple" > Current : </span>100</h5>
+                    <!--<h5 class="text-pink"><span class="text-purple">  </span> &nbsp;</h5>-->
+                </div>
+
+                <i class="ti-bookmark-alt card-eco-icon bg-icon-purple align-self-center"></i>
+            </div>
+                <!--<p class="text-purple">{{ToDateBooking}}</p>
+                <p class="mb-0 text-muted text-truncate"><span class="text-success"><i class="mdi mdi-trending-up"></i> 8.5%</span>Up From Yesterday</p>-->
+            </div><!--end card-body-->
+        </div><!--end card-->
+    </div><!--end col-->
+
+    <div class="col-lg-6">
+        <div class="card card-eco">
+            <div class="card-body" style="height:180px;">
+                <h4 class="title-text mt-0"  style="font-size:18px;">Ticket</h4>
+                <!--<br />
+                <div class="d-flex justify-content-between">
+                    <h3 class="text-purple">{{TotalBooking}}</h3>
+
+                    <i class="fas fa-lock card-eco-icon bg-icon-purple align-self-center"></i>
+                </div>-->
+
+            <div class="d-flex justify-content-between">
+                <div style="padding-left: 10px; ">
+                  
+                    <!--<h5 class="text-pink"><span class="text-purple">  Port : </span> 10</h5>-->
+                    <h5 style="font-size: 18px;" class="text-pink"><span class="text-purple" >Send  : </span> 300</h5>
+                    <h5 style="font-size: 18px;" class="text-pink"><span class="text-purple" >Pending  : </span> 100</h5>
+                    <h5 style="font-size: 18px;" class="text-pink"><span class="text-purple" >Resolved  : </span>200</h5>
+                    <!--<h5 class="text-pink"><span class="text-purple">  </span> &nbsp;</h5>
+        <h5 class="text-pink"><span class="text-purple">  </span> &nbsp;</h5>-->
+                </div>
+
+                <i class="fas fa-ticket-alt card-eco-icon align-self-center" style="background-color: #33cc33;"></i>
+            </div>
+                <!--<p class="text-purple">{{ToDateBooking}}</p>
+                <p class="mb-0 text-muted text-truncate"><span class="text-success"><i class="mdi mdi-trending-up"></i> 8.5%</span>Up From Yesterday</p>-->
+            </div><!--end card-body-->
+        </div><!--end card-->
+    </div><!--end col-->
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title mt-0">Power Consumption Timeline</h4>
+                <div class="chart-demo">
+
+                    <div class="chart-demo">
+                        <div id="apex_column1" class="apex-charts"></div>
+                    </div>
+                </div>
+                <br />
+
+
+            </div><!--end card-body-->
+        </div><!--end card-->
+
+        <br />
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title mt-0">Tickets</h4>
+                <div class="chart-demo">
+                    <div id="UserTicketsChart" class="apex-charts"></div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title mt-0">Booking</h4>
+                <div class="chart-demo">
+                    <div id="UserBookingChart" class="apex-charts"></div>
+                </div>
+
+            </div>
+        </div>
+    </div><!--end col-->
+</div>
+
+
+
+
+
+
+
+
+<script src="../Content/assets/js/jquery.min.js"></script>
+<script src="../Content/assets/js/bootstrap.bundle.min.js"></script>
+<script src="../Content/assets/js/metisMenu.min.js"></script>
+<script src="../Content/assets/js/waves.min.js"></script>
+<script src="../Content/assets/js/jquery.slimscroll.min.js"></script>
+
+<script src="../Content/assets/plugins/apexcharts/apexcharts.min.js"></script>
+<script src="../Content/assets/pages/jquery.analytics_dashboard.init.js"></script>
+
+
+<!-- App js -->
+<!--<script src="../Content/assets/js/app.js"></script>-->
+<!--<script src="../Content/assets/pages/jquery.eco_dashboard.init.js"></script>-->

@@ -1,0 +1,668 @@
+﻿
+<link href="../../../Content/bootstrap-datepicker.css" rel="stylesheet" />
+
+<style>
+    @media print {
+        .hidden-print {
+            visibility: hidden;
+        }
+
+        .printHidden {
+            display: none;
+        }
+    }
+
+    @media only screen and (min-device-width : 200px) and (max-device-width : 767px) {
+
+        #navigationUrlHide {
+            display: none;
+        }
+
+        .BtnWidth {
+            width: 100%;
+            margin: 4px;
+        }
+
+        .DivMargin {
+            margin-top: 5px;
+        }
+
+        .headerInputFiledHide {
+            width: 276px;
+            margin-top: 5px;
+        }
+        .hedarNavbarSizeFixed {
+            width:150px;
+
+        }
+
+        .BillAdjustmentInputFiled {
+            margin-top: 10px;
+            width:  276px !important;
+        }
+
+        .voidBillInputFixedSize {
+            margin-top: 15px;
+           
+        }
+        .voidPaymentFixedSize {
+            margin-top: 15px;
+        }
+       
+    }
+
+        @media only screen and (min-device-width : 767px) and (max-device-width : 1024px) {
+            .VoidBillCheckBoxSize {
+                margin-left: 5px;
+                width: 276px !important;
+            }
+        }
+
+        #SelectDiv .select2-container {
+            width: 276px !important;
+        }
+</style>
+<div class="row printHidden" ng-hide="">
+    <div class="col-sm-12">
+        <div class="page-title-box">
+            <div class="float-right">
+                <ol class="breadcrumb" id="navigationUrlHide">
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">Power up</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">User</a></li>
+                    <li class="breadcrumb-item active">Invoice</li>
+                </ol>
+            </div>
+            <h4 class="page-title">
+                Invoice
+            </h4>
+        </div><!--end page-title-box-->
+    </div><!--end col-->
+</div>
+
+<div class="row printHidden">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <ul class="nav nav-pills mb-0">
+                    <li class="nav-item">
+                        <a class="nav-link active hedarNavbarSizeFixed"  ng-click="BtnGenerateInvoice()" data-toggle="pill">Generate Invoice</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hedarNavbarSizeFixed" ng-click="BtnBillAdjustment()" data-toggle="pill" >Bill Adjustment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hedarNavbarSizeFixed" ng-click="BtnVoidBill()" data-toggle="pill" >Void Bill</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hedarNavbarSizeFixed" ng-click="BtnVoidPayment()" data-toggle="pill" >Void Payment</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div><!--end card-->
+    </div><!--end col-->
+</div><!--end row-->
+<!-- Generate Invoice -->
+
+<div class="row" ng-show="IsGenerateInvoice">
+    <div class="col-lg-12">
+        <div class="card">
+            <br />
+
+            <div class="row hidden-print">
+
+                <div class="col-md-3">
+                    <div class="input-group headerInputFiledHide" id="CustomerDiv">
+                        <select id="ddlCustomerForInvoice" class="select2 form-control mb-3 custom-select" ng-model="ddlCustomer" ng-click="test()" ng-options="Customer.CustomerName for Customer in CustomerList track by Customer.CustomerId" ng-change="Invoice.CustomerId = ddlCustomer.CustomerId">
+                            <option value="" hidden></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="input-append date headerInputFiledHide" id="dpMonths">
+                        <div class="input-group">
+                            <span class="input-group-prepend">
+                                <button type="button" class="btn btn-gradient-primary"><i class="fas fa-calendar"></i></button>
+                            </span>
+                            <input type="text" name="example-input1-group2" id="InvoiceDate" class="span2 form-control" placeholder="Invoice Date Month" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-primary headerInputFiledHide" ng-click="ShowInvoiceReport()">Generate Invoice</button>
+                </div>
+
+                <!--<div class="col-6 col-xs-6 col-sm-6 col-md-8 col-lg-8">
+                    <div class="row">
+                        <div class="col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <div class="input-group" id="CustomerDiv">
+                                <select id="ddlCustomerForInvoice" class="select2 form-control mb-3 custom-select" ng-model="ddlCustomer" ng-click="test()" ng-options="Customer.CustomerName for Customer in CustomerList track by Customer.CustomerId" ng-change="Invoice.CustomerId = ddlCustomer.CustomerId; test();">
+                                    <option value="" hidden></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <div class="input-append date" id="dpMonths">
+                                <div class="input-group">
+                                    <span class="input-group-prepend">
+                                        <button type="button" class="btn btn-gradient-primary"><i class="fas fa-calendar"></i></button>
+                                    </span>
+                                    <input type="text" name="example-input1-group2" id="InvoiceDate" class="span2 form-control" placeholder="Invoice Date Month" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-6 col-xs-6 col-sm-6 col-md-4 col-lg-4">
+                    <button class="btn btn-primary" ng-click="ShowInvoiceReport()">Generate Invoice</button>
+                </div>-->
+
+            </div>
+
+
+            <br />
+            <hr />
+            <div ng-show="IsShowInvoice">
+                <div class="card-body invoice-head">
+                    <div class="row">
+                        <div class="col-md-4 align-self-center">
+                            <img src="../Content/assets/images/logo-sm.png" alt="logo-small" class="logo-sm mr-2" height="26">
+                            <img src="../Content/assets/images/logo-dark.png" alt="logo-large" class="logo-lg" height="16">
+                            <p class="mt-2 mb-0 text-muted">If account is not paid within 7 days the credits details supplied as confirmation.</p>
+                        </div><!--end col-->
+                        <div class="col-md-8">
+
+                            <ul class="list-inline mb-0 contact-detail float-right">
+                                <li class="list-inline-item">
+                                    <div class="pl-3">
+                                        <i class="mdi mdi-web"></i>
+                                        <p class="text-muted mb-0">www.abcdefghijklmno.com</p>
+                                        <p class="text-muted mb-0">www.qrstuvwxyz.com</p>
+                                    </div>
+                                </li>
+                                <li class="list-inline-item">
+                                    <div class="pl-3">
+                                        <i class="mdi mdi-phone"></i>
+                                        <p class="text-muted mb-0">+123 123456789</p>
+                                        <p class="text-muted mb-0">+123 123456789</p>
+                                    </div>
+                                </li>
+                                <li class="list-inline-item">
+                                    <div class="pl-3">
+                                        <span>
+                                            <i class="mdi mdi-map-marker"> </i>   <a style="margin-left:160px;" ng-click="PrintPdf();" class="btn btn-default printHidden"><i style="color:slategrey;" class="fa fa-print"></i></a>
+                                        </span>
+
+                                        <p class="text-muted mb-0">2821 Kensington Road,</p>
+                                        <p class="text-muted mb-0">Avondale Estates, GA 30002 USA.</p>
+                                    </div>
+                                    <div>
+
+                                    </div>
+                                </li>
+                            </ul>
+                        </div><!--end col-->
+                    </div><!--end row-->
+                </div><!--end card-body-->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="">
+                                <h6 class="mb-0"><b>Start Date :</b> 11/05/2019</h6>
+                                <h6 class="mb-0"><b>End Date :</b> 10/06/2019</h6>
+                            </div>
+                        </div><!--end col-->
+                        <div class="col-md-6">
+                            <h6 class="mb-0"><b>Compny :</b> Hubland</h6>
+                            <h6 class="mb-0"><b>Project Name :</b> Trading System</h6>
+                            <h6 class="mb-0"><b>Invoice No :</b> #1240</h6>
+                        </div><!--end col-->
+                        <div class="col-md-3">
+                            <div class="text-center bg-light p-3 mb-3">
+                                <h5 class="bg-secondary mt-0 p-2 text-white d-sm-inline-block">Payment Methods</h5>
+                                <h6 class="font-13">Paypal & Cards Payments :</h6>
+                                <p class="mb-0 text-muted">CompanyA/c.paypal@gmai.com</p>
+                                <p class="mb-0 text-muted">Visa, Master Card, Chaque</p>
+                            </div>
+                        </div> <!--end col-->
+                    </div><!--end row-->
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="table-responsive project-invoice">
+                                <table class="table table-bordered mb-0">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th>Project Breakdown</th>
+                                            <th>Hours</th>
+                                            <th>Rate</th>
+                                            <th>Subtotal</th>
+                                        </tr><!--end tr-->
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <h5 class="mt-0 mb-1">Project Design</h5>
+                                                <p class="mb-0 text-muted">It is a long established fact that a reader will be distracted.</p>
+                                            </td>
+                                            <td>60</td>
+                                            <td>$50</td>
+                                            <td>$3000.00</td>
+                                        </tr><!--end tr-->
+                                        <tr>
+                                            <td>
+                                                <h5 class="mt-0 mb-1">Development</h5>
+                                                <p class="mb-0 text-muted">It is a long established fact that a reader will be distracted.</p>
+                                            </td>
+                                            <td>100</td>
+                                            <td>$50</td>
+                                            <td>$5000.00</td>
+                                        </tr><!--end tr-->
+                                        <tr>
+                                            <td>
+                                                <h5 class="mt-0 mb-1">Testing & Bug Fixing</h5>
+                                                <p class="mb-0 text-muted">It is a long established fact that a reader will be distracted.</p>
+                                            </td>
+                                            <td>10</td>
+                                            <td>$20</td>
+                                            <td>$200.00</td>
+                                        </tr><!--end tr-->
+
+                                        <tr>
+                                            <td colspan="2" class="border-0"></td>
+                                            <td class="border-0 font-14"><b>Sub Total</b></td>
+                                            <td class="border-0 font-14"><b>$82,000.00</b></td>
+                                        </tr><!--end tr-->
+                                        <tr>
+                                            <th colspan="2" class="border-0"></th>
+                                            <td class="border-0 font-14"><b>Tax Rate</b></td>
+                                            <td class="border-0 font-14"><b>$0.00%</b></td>
+                                        </tr><!--end tr-->
+                                        <tr class="bg-dark text-white">
+                                            <th colspan="2" class="border-0"></th>
+                                            <td class="border-0 font-14"><b>Total</b></td>
+                                            <td class="border-0 font-14"><b>$82,000.00</b></td>
+                                        </tr><!--end tr-->
+                                    </tbody>
+                                </table><!--end table-->
+                            </div>  <!--end /div-->
+                        </div>  <!--end col-->
+                    </div><!--end row-->
+
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6">
+                            <h5 class="mt-4">Terms And Condition :</h5>
+                            <ul class="pl-3">
+                                <li><small>All accounts are to be paid within 7 days from receipt of invoice. </small></li>
+                                <li><small>To be paid by cheque or credit card or direct payment online.</small></li>
+                                <li><small> If account is not paid within 7 days the credits details supplied as confirmation<br> of work undertaken will be charged the agreed quoted fee noted above.</small></li>
+                            </ul>
+                        </div> <!--end col-->
+                        <div class="col-lg-6 align-self-end">
+                            <div class="w-25 float-right">
+                                <small>Account Manager</small>
+                                <img src="../Content/assets/images/signature.png" alt="" class="" height="48">
+                                <p class="border-top">Signature</p>
+                            </div>
+                        </div><!--end col-->
+                    </div><!--end row-->
+                    <hr>
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-lg-12 col-xl-4 ml-auto align-self-center">
+                            <div class="text-center text-muted"><small>Thank you very much for doing business with us. Thanks !</small></div>
+                        </div><!--end col-->
+                        <div class="col-lg-12 col-xl-4">
+                            <div class="float-right d-print-none">
+
+                                <!--<a href="#" class="btn btn-gradient-primary">Submit</a>-->
+                                <!--<a href="#" class="btn btn-gradient-danger">Cancel</a>-->
+                            </div>
+                        </div><!--end col-->
+                    </div><!--end row-->
+                </div><!--end card-body-->
+            </div>
+
+        </div><!--end card-->
+    </div><!--end col-->
+</div><!--end row-->
+<!-- Bill Adjustment -->
+
+<div class="row" ng-show="IsBillAdjustment">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title">Bill Adjustment</h4>
+                <div class="row">
+                    <div class="col-md-4 BillAdjustmentInputFiled">
+                        <div class="input-group" id="CustomerDiv">
+                            <select id="ddlCustomerForBillAdjustment" class="select2 form-control mb-3 custom-select" ng-model="ddlCustomer" ng-click="test()" ng-options="Customer.CustomerName for Customer in CustomerList track by Customer.CustomerId" ng-change="Invoice.CustomerId = ddlCustomer.CustomerId; test();">
+                                <option value="" hidden></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-2 BillAdjustmentInputFiled">
+                        <div class="input-group" id="CustomerDiv">
+                            <select id="ddlBillNoForBillAdjustment" class="select2 form-control mb-3 custom-select" ng-model="ddlBillNoBA" ng-click="test()" ng-options="BillNo.BillNo for BillNo in BillNoList track by BillNo.BillNoId" ng-change="Invoice.BillNoId = ddlBillNoBA.BillNoId; Invoice.BillAmount = ddlBillNoBA.BillAmount; test();">
+                                <option value="" hidden></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-2 BillAdjustmentInputFiled">
+                        <div class="input-group">
+                            <input type="number" id="BillAmount" name="BillAmount" ng-model="Invoice.BillAmount" class="form-control" placeholder="Bill Amount" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-2 BillAdjustmentInputFiled">
+                        <div class="input-group">
+                            <input type="number" id="Adjustment" name="Adjustment" ng-model="Invoice.Adjustment" class="form-control" placeholder="Adjustment Amount">
+                        </div>
+                    </div>
+                    <div class="col-md-2 BillAdjustmentInputFiled">
+                        <div class="input-group">
+                            <input type="number" id="AfterAdjusted" name="AfterAdjusted" ng-model="Invoice.AfterAdjusted" class="form-control" placeholder="After Adjusted Amount" readonly>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <br />
+
+                <!--<div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <button class="btn btn-success" ng-click="BillAdjustmentSave()"> Save</button>
+                <button style="margin-left:10px;" class="btn btn-danger" ng-click="BillAdjustmentReset()"> Reset</button>
+                <button style="margin-left:10px;" class="btn btn-Info" ng-click="FillData();"> Fill In Box</button>
+            </div>
+        </div>
+    </div>-->
+
+                <div class="row">
+                    <div class="col-6 col-xs-6 col-sm-6 col-md-2 col-lg-2">
+                        <div class="row">
+                            <div class="col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                <button class="btn btn-success" style="padding:5px;" ng-click="BillAdjustmentSave()"> Save</button>
+                            </div>
+                            <div class="col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                <button class="btn btn-danger" ng-click="BillAdjustmentReset()" style="padding:5px;"> Reset</button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-6 col-xs-6 col-sm-6 col-md-2 col-lg-2">
+                        <button class="btn btn-Info" style="padding:5px;" ng-click="BillAdjustmentFillData();"> Fill In Box</button>
+                    </div>
+
+                </div>
+
+                <br />
+                <h4 class="header-title">Bill Adjustment List</h4>
+                <div class="row">
+                    <div class="table-responsive">
+                        <table class="table table-bordered mb-0 table-centered">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">ID</th>
+                                    <th class="text-center">Bill No</th>
+                                    <th class="text-center">Bill Amount</th>
+                                    <th class="text-center">Adjusted Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="aAdjustedBillNo in AdjustedBillNoList">
+                                    <td class="text-center">{{aAdjustedBillNo.BillNoId}}</td>
+                                    <td class="text-center">{{aAdjustedBillNo.BillNo}}</td>
+                                    <td class="text-center">{{aAdjustedBillNo.BillAmount}}</td>
+                                    <td class="text-center">{{aAdjustedBillNo.AdjustedAmount}}</td>
+                                </tr>
+                            </tbody>
+                        </table><!--end /table-->
+                    </div><!--end /tableresponsive-->
+                </div>
+            </div>
+        </div><!--end card-->
+    </div><!--end col-->
+</div><!--end row-->
+<!-- Void Bill -->
+
+    
+
+<div class="row" ng-show="IsVoidBill">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title">Void Bill</h4>
+                <div class="row">
+                    <div class="col-md-4 voidBillInputFixedSize">
+                        <div class="input-group" id="CustomerDiv">
+                            <select id="ddlCustomerForVoidBill" class="select2 form-control mb-3 custom-select" ng-model="ddlCustomer"  ng-options="Customer.CustomerName for Customer in CustomerList track by Customer.CustomerId" ng-change="Invoice.CustomerId = ddlCustomer.CustomerId">
+                                <option value="" hidden></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-2 voidBillInputFixedSize">
+                        <div class="input-group" id="CustomerDiv">
+                            <select id="ddlBillNoForVoidBill" class="select2 form-control mb-3 custom-select" ng-model="ddlBillNoVB" ng-options="BillNo.BillNo for BillNo in BillNoList track by BillNo.BillNoId" ng-change="Invoice.BillNoId = ddlBillNoVB.BillNoId">
+                                <option value="" hidden></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4 voidBillInputFixedSize ">
+                        <div class="form-group ml-2">
+                            <div class="custom-control custom-checkbox VoidBillCheckBoxSize">
+                                <input type="checkbox" class="custom-control-input" id="customCheck1" ng-model="Invoice.VoidBill" data-parsley-multiple="groups" data-parsley-mincheck="2">
+                                <label class="custom-control-label" for="customCheck1">Check For Void Bill</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <br />
+
+                <div class="row">
+                    <div class="col-6 col-xs-6 col-sm-6 col-md-2 col-lg-2">
+                        <div class="row">
+                            <div class="col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                <button class="btn btn-success" style="padding:5px;" ng-click="SaveVoidBill()"> Save</button>
+                            </div>
+                            <div class="col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                <button class="btn btn-danger" ng-click="VoidBillReset()" style="padding:5px;"> Reset</button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-6 col-xs-6 col-sm-6 col-md-2 col-lg-2">
+                        <button class="btn btn-Info" style="padding:5px;" ng-click="VoidBillFill();"> Fill In Box</button>
+                    </div>
+
+                </div>
+
+                <!--<div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <button class="btn btn-success" ng-click="SaveVoidBill()"> Save</button>
+                            <button style="margin-left:10px;" class="btn btn-danger" ng-click="SaveVoidBillReset()"> Reset</button>
+                            <button style="margin-left:10px;" class="btn btn-Info" ng-click="FillData();"> Fill In Box</button>
+                        </div>
+                    </div>
+                </div>-->
+                <br />
+
+                <h4 class="header-title">Void Bill List</h4>
+                <div class="row">
+                    <div class="table-responsive">
+                        <table class="table table-bordered mb-0 table-centered">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">ID</th>
+                                    <th class="text-center">Bill No</th>
+                                    <th class="text-center">Bill Amount</th>
+                                    <th class="text-center">Statue</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="aVoidBill in VoidBillList">
+                                    <td class="text-center">{{aVoidBill.VoidBillId}}</td>
+                                    <td class="text-center">{{aVoidBill.BillNo}}</td>
+                                    <td class="text-center">{{aVoidBill.BillAmount}}</td>
+                                    <td class="text-center">{{aVoidBill.IsVoid}}</td>
+                                </tr>
+                            </tbody>
+                        </table><!--end /table-->
+                    </div><!--end /tableresponsive-->
+                </div>
+            </div>
+        </div><!--end card-->
+    </div><!--end col-->
+</div><!--end row-->
+<!-- Void Bill -->
+
+<div class="row" ng-show="IsVoidPayment">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title">Void Payment</h4>
+                <div class="row">
+                    <div class="col-md-4 voidPaymentFixedSize">
+                        <div class="input-group" id="CustomerDiv">
+                            <select id="ddlCustomerForVoidPayment" class="select2 form-control mb-3 custom-select" ng-model="ddlCustomer" ng-click="test()" ng-options="Customer.CustomerName for Customer in CustomerList track by Customer.CustomerId" ng-change="Invoice.CustomerId = ddlCustomer.CustomerId; test();">
+                                <option value="" hidden></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group voidPaymentFixedSize" id="CustomerDiv">
+                            <select id="ddlPaymentNoForVoidPayment" class="select2 form-control mb-3 custom-select" ng-model="ddlPaymentNo" ng-options="VoidPayment.PaymentNo for VoidPayment in VoidPaymentList track by VoidPayment.VoidPaymentId" ng-change="Invoice.VoidPaymentId = ddlPaymentNo.VoidPaymentId">
+                                <option value="" hidden></option>
+                            </select>
+                        </div>
+                    </div>
+                 
+                    <div class="col-md-3" style="margin-left:15px;">
+                        <div class="form-group  voidPaymentFixedSize ">
+                            <div class="custom-control custom-checkbox " >
+                                <input type="checkbox" class="custom-control-input" id="customCheck1" ng-model="Invoice.VoidPayment" data-parsley-multiple="groups" data-parsley-mincheck="2">
+                                <label class="custom-control-label" for="customCheck1">Check For Void Payment</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <br />
+
+                <div class="row">
+                    <div class="col-6 col-xs-6 col-sm-6 col-md-2 col-lg-2">
+                        <div class="row">
+                            <div class="col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                <button class="btn btn-success" style="padding:5px;" ng-click="VoidPayment()"> Save</button>
+                            </div>
+                            <div class="col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                <button class="btn btn-danger" ng-click="VoidPaymentReset()" style="padding:5px;"> Reset</button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-6 col-xs-6 col-sm-6 col-md-2 col-lg-2">
+                        <button class="btn btn-Info" style="padding:5px;" ng-click="FillData();"> Fill In Box</button>
+                    </div>
+
+                </div>
+
+                <!--<div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <button class="btn btn-success" ng-click="VoidPayment()"> Save</button>
+                            <button style="margin-left:10px;" class="btn btn-danger" ng-click="VoidPaymentReset()"> Reset</button>
+                            <button style="margin-left:10px;" class="btn btn-Info" ng-click="FillData();"> Fill In Box</button>
+                        </div>
+                    </div>
+                </div>-->
+                <br />
+                <h4 class="header-title">Void Payment List</h4>
+                <div class="row">
+                    <div class="table-responsive">
+                        <table class="table table-bordered mb-0 table-centered">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">ID</th>
+                                    <th class="text-center">Payment No</th>
+                                    <th class="text-center">Payment Amount</th>
+                                    <th class="text-center">Statue</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="aVoidPayment in VoidPaymentList">
+                                    <td class="text-center">{{aVoidPayment.VoidPaymentId}}</td>
+                                    <td class="text-center">{{aVoidPayment.PaymentNo}}</td>
+                                    <td class="text-center">{{aVoidPayment.PaymentAmount}}</td>
+                                    <td class="text-center">{{aVoidPayment.IsVoid}}</td>
+                                </tr>
+                            </tbody>
+                        </table><!--end /table-->
+                    </div><!--end /tableresponsive-->
+                </div>
+            </div>
+        </div><!--end card-->
+    </div><!--end col-->
+</div><!--end row-->
+
+
+<!--<script src="../Content/assets/js/jquery.min.js"></script>
+<script src="../Content/assets/js/bootstrap.bundle.min.js"></script>
+<script src="../Content/assets/js/metisMenu.min.js"></script>
+<script src="../Content/assets/js/waves.min.js"></script>
+<script src="../Content/assets/js/jquery.slimscroll.min.js"></script>
+<script src="../../../Scripts/bootstrap-datepicker.js"></script>
+
+<script src="../../../Scripts/select2.min.js"></script>
+
+<script src="../Content/assets/plugins/moment/moment.js"></script>
+<script src="../Content/assets/plugins/daterangepicker/daterangepicker.js"></script>
+
+<script src="../Content/assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+<script src="../Content/assets/plugins/timepicker/bootstrap-material-datetimepicker.js"></script>
+<script src="../Content/assets/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
+<script src="../Content/assets/plugins/bootstrap-touchspin/js/jquery.bootstrap-touchspin.min.js"></script>
+
+<script src="../Content/assets/pages/jquery.forms-advanced.js"></script>-->
+
+
+<script>
+    $("#ddlBillNoForBillAdjustment").select2({
+        placeholder: "Select Bill Number",
+        dropdownAutoWidth: false
+    });
+    $("#ddlCustomerForBillAdjustment").select2({
+        placeholder: "Select Customer",
+        dropdownAutoWidth: false
+    });
+    $("#ddlBillNoForVoidBill").select2({
+        placeholder: "Select Bill Number",
+        dropdownAutoWidth: false
+    });
+    $("#ddlCustomerForVoidBill").select2({
+        placeholder: "Select Customer",
+        dropdownAutoWidth: false
+    });
+    $("#ddlPaymentNoForVoidPayment").select2({
+        placeholder: "Select Payment Number",
+        dropdownAutoWidth: false
+    });
+    $("#ddlCustomerForVoidPayment").select2({
+        placeholder: "Select Customer",
+        dropdownAutoWidth: false
+    });
+    $("#ddlCustomerForInvoice").select2({
+        placeholder: "Select Customer",
+        dropdownAutoWidth: false
+    });
+
+</script>
+<style>
+    #CustomerDiv .select2-container {
+        width: 344px !important;
+    }
+    #BillNoDiv .select2-container {
+        width: 276px !important;
+    }
+</style>

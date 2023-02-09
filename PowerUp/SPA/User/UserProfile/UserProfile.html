@@ -1,0 +1,218 @@
+﻿
+<div class="page-content">
+
+    <div class="container-fluid">
+        <!-- Page-Title -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-title-box">
+                    <div class="float-right">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0);">Power Up</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0);">User</a></li>
+                            <li class="breadcrumb-item active">User Profile</li>
+                        </ol>
+                    </div>
+                    <h4 class="page-title">User Profile</h4>
+                </div><!--end page-title-box-->
+            </div><!--end col-->
+        </div>
+        <!-- end page title end breadcrumb -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body  met-pro-bg">
+                        <div class="met-profile">
+                            <div class="row">
+                                <div class="col-lg-4 align-self-center mb-3 mb-lg-0">
+                                    <div class="met-profile-main">
+                                        <div class="met-profile-main-pic">
+                                            <img src="/Content/assets/images/users/user-4.jpg" alt="" class="rounded-circle">
+                                            <span class="fro-profile_main-pic-change">
+                                                <i class="fas fa-camera"></i>
+                                            </span>
+                                        </div>
+                                        <div class="met-profile_user-detail">
+                                            <h5 class="met-user-name">Mokabbir</h5>
+                                            <p class="mb-0 met-user-name-post">Software Engineer</p>
+                                        </div>
+                                    </div>
+                                </div><!--end col-->
+                                <div class="col-lg-4 ml-auto">
+                                    <ul class="list-unstyled personal-detail">
+                                        <li class=""><i class="dripicons-phone mr-2 text-info font-18"></i> <b> phone </b> : +91 23456 78910</li>
+                                        <li class="mt-2"><i class="dripicons-mail text-info font-18 mt-2 mr-2"></i> <b> Email </b> : mannat.theme@gmail.com</li>
+                                        <li class="mt-2"><i class="dripicons-location text-info font-18 mt-2 mr-2"></i> <b>Location</b> : USA</li>
+                                    </ul>
+                                    <div class="button-list btn-social-icon">
+                                        <button type="button" class="btn btn-blue btn-round">
+                                            <i class="fab fa-facebook-f"></i>
+                                        </button>
+
+                                        <button type="button" class="btn btn-secondary btn-round ml-2">
+                                            <i class="fab fa-twitter"></i>
+                                        </button>
+
+                                        <button type="button" class="btn btn-pink btn-round  ml-2">
+                                            <i class="fab fa-dribbble"></i>
+                                        </button>
+                                    </div>
+                                </div><!--end col-->
+                            </div><!--end row-->
+                        </div><!--end f_profile-->
+                    </div><!--end card-body-->
+                    <div class="card-body">
+                        <ul class="nav nav-pills mb-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" ng-click="ButtonPersonal()" data-toggle="pill">Personal Information</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" ng-click="ButtonPayment()" data-toggle="pill" >Payment Information</a>
+                            </li>
+
+                        </ul>
+                    </div><!--end card-body-->
+                </div><!--end card-->
+            </div><!--end col-->
+        </div><!--end row-->
+        <div class="row">
+            <div class="col-lg-12">
+                <div>
+                    <div ng-show="IsPersonal">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-xl-12 mx-auto">
+                                                <!--<div class="card">
+                                                    <div class="card-body">-->
+                                                <!--<form method="post" class="card-box">
+                                                    <input type="file" id="input-file-now-custom-1" class="dropify" data-default-file="/Content/assets/images/users/user-4.jpg" />
+                                                </form>-->
+
+                                                <div class="">
+                                                    <form class="form-horizontal form-material mb-0">
+                                                        <div class="form-group row">
+                                                            <div class="col-md-6">
+                                                                <input type="text" placeholder="First Name" class="form-control">
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <input type="text" placeholder="Last Name" class="form-control">
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="form-group row">
+                                                            <div class="col-md-4">
+                                                                <input type="email" placeholder="Email" class="form-control" name="example-email" id="example-email">
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <input type="password" placeholder="password" class="form-control">
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <input type="password" placeholder="Re-password" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-md-6">
+                                                                <input type="text" placeholder="Phone No" class="form-control">
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <textarea type="text" placeholder="Address" rows="1" class="form-control"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <button class="btn btn-gradient-primary btn-sm text-light px-4 mt-3 float-right mb-0">Update Profile</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <!--</div>
+                                                </div>-->
+                                            </div> <!--end col-->
+                                        </div><!--end row-->
+                                    </div><!--end card-body-->
+                                </div><!--end card-->
+                            </div><!--end col-->
+                        </div><!--end row-->
+                    </div><!--end general detail-->
+
+                    <div ng-show="IsPayment">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="header-title mt-0 mb-3">Billing Details</h4>
+                                        <div class="billing-nav">
+                                            <ul class="nav nav-pills justify-content-center text-center mb-3" id="pills-tab" role="tablist">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" id="pills-credit-card-tab" data-toggle="pill" href=""><i class="mdi mdi-credit-card d-block mx-auto text-danger font-18"></i>Card</a>
+                                                </li>
+                                                <!--<li class="nav-item">
+                                                    <a class="nav-link" id="pills-paypal-tab" data-toggle="pill" href="#pills-paypal"><i class="mdi mdi-paypal d-block mx-auto text-secondary font-18"></i>Paypal</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="pills-bitcoin-tab" data-toggle="pill" href="#pills-bitcoin"><i class="mdi mdi-bitcoin d-block mx-auto text-warning font-18"></i>Bitcoin</a>
+                                                </li>-->
+                                            </ul>
+                                            <div class="tab-content" id="pills-tabContent">
+                                                <div class="tab-pane fade show active" id="pills-credit-card">
+                                                    <div class="demo-container">
+                                                        <div class="card-wrapper mb-4"></div>
+                                                        <div class="form-container">
+                                                            <form class="bill-form">
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label>Card Number</label>
+                                                                            <input placeholder="Card number" class="form-control" type="tel" name="number">
+                                                                        </div>
+                                                                    </div><!--end col-->
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label>Full Name</label>
+                                                                            <input placeholder="Full name" class="form-control" type="text" name="name">
+                                                                        </div>
+                                                                    </div><!--end col-->
+                                                                </div><!--end row-->
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label>Ex. Date</label>
+                                                                            <input placeholder="MM/YY" class="form-control" type="tel" name="expiry">
+                                                                        </div>
+                                                                    </div><!--end col-->
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label>CVV</label>
+                                                                            <input placeholder="CVC" class="form-control" type="number" name="cvc">
+                                                                        </div>
+                                                                    </div><!--end col-->
+                                                                </div><!--end row-->
+                                                                <button class="btn btn-success px-3">Pay Now</button>
+                                                            </form><!--end form-->
+                                                        </div><!--end form-container-->
+                                                    </div><!--end demo-->
+                                                </div><!--end tab-pane-->
+                                            </div><!--end tab-content-->
+                                        </div> <!--end billing-nav-->
+                                    </div>  <!--end card-body-->
+                                </div><!--end card-->
+                            </div><!--end col-->
+                        </div><!--end row-->
+                    </div><!--end education detail-->
+                </div><!--end tab-content-->
+
+            </div><!--end col-->
+        </div><!--end row-->
+
+    </div><!-- container -->
+</div>
+
+
+<script>
+            new Card({
+                form: document.querySelector('.bill-form'),
+                container: '.card-wrapper'
+            });
+</script>    

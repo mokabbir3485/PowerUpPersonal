@@ -1,0 +1,143 @@
+﻿
+<style>
+    @media only screen and (min-device-width : 200px) and (max-device-width : 767px) {
+        /* For mobile phones: */
+        [class*="col-"] {
+            width: 100%;
+            margin: 5px;
+        }
+
+        .BtnWidth {
+            width: 100%;
+            margin: 2px;
+        }
+
+        #navigationUrlHide {
+            display: none;
+        }
+    }
+</style>
+<link href="../../../Content/Toggle.css" rel="stylesheet" />
+<div class="row">
+    <div class="col-sm-12">
+        <div class="page-title-box">
+            <div class="float-right">
+                <ol class="breadcrumb" id="navigationUrlHide">
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">Power Up</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">Customer Care</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">Enable Disable Swap Station</a></li>
+                    <!--<li class="breadcrumb-item active">Lock Unlock Locker</li>-->
+                </ol>
+            </div>
+            <h4 class="page-title">Enable Disable Swap Station</h4>
+        </div><!--end page-title-box-->
+    </div><!--end col-->
+</div><!--end row-->
+<!-- end page title end breadcrumb -->
+<div class="col-md-12">
+
+    <div class="card">
+        <div class="card-body">
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="input-group">
+                        <select id="ddlLocation" class="form-control" ng-model="ddlLocation" ng-options="Location.LocationName for Location in LocationList track by Location.id" ng-change="getLocker(ddlLocation.id);">
+                            <option value="" hidden>Select Location</option>
+                        </select>
+                    </div>
+
+                </div>
+                
+                <div class="col-md-6">
+                </div>
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <span class="input-group-prepend">
+                                <button type="button" class="btn btn-gradient-primary"><i class="fas fa-search"></i></button>
+                            </span>
+                            <input type="text" id="example-input1-group2" name="example-input1-group2" class="form-control" placeholder="Search">
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="table-responsive">
+                    <div class="col-md-3" style="float: left;" ng-repeat="aLockUnlock in LockUnlockList">
+                        <div class="media setting-card">
+                            <span class="sett-card-icon set-icon-success">
+                                <i class="mdi mdi-google-chrome"></i>
+                            </span>
+                            <div class="media-body align-self-center">
+                                <div class="setting-detail">
+                                    <h3 class="mb-0 mt-0">{{aLockUnlock.LockerName}}</h3>
+                                    <p class="text-muted mb-0">Used for withdrawals and security modifications</p>
+                                </div>
+                                <div class="mt-2">
+                                    <!--<div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                        <label class="btn btn-outline-dark btn-sm {{aLockUnlock.LockStatus}}">
+                                            <input type="radio" name="options" id="option5" checked> Enable
+                                        </label>
+
+                                        <label class="btn btn-outline-dark btn-sm {{aLockUnlock.UnlockStatus}}">
+                                            <input type="radio" name="options" id="option6"> Disable
+                                        </label>
+                                    </div>--><!--end btn-group-->
+
+                                    <div class="can-toggle demo-rebrand-1">
+                                        <input id="{{aLockUnlock.id}}" type="checkbox" ng-model="aLockUnlock.Status" ng-click="SelectDoor(aLockUnlock)" ng-change="test()">
+                                        <label for="{{aLockUnlock.id}}">
+                                            <div class="can-toggle__switch" data-checked="Enable" data-unchecked="Disable"></div>
+                                            <!--<div class="can-toggle__label-text">.can-toggle.demo-rebrand-1</div>-->
+                                        </label>
+                                    </div>
+
+
+                                </div> <!--end /div-->
+                            </div><!--end media body-->
+                        </div><!--end media-->
+                        <br />
+                    </div>
+                    <!--<table class="table table-bordered mb-0 table-centered">-->
+                    <!--<tbody>
+        <tr>
+            <td ng-repeat="aLockUnlock in LockUnlockList">
+                <div class="media setting-card">
+                    <span class="sett-card-icon set-icon-success">
+                        <i class="mdi mdi-google-chrome"></i>
+                    </span>
+                    <div class="media-body align-self-center">
+                        <div class="setting-detail">
+                            <h3 class="mb-0 mt-0">Google Auth</h3>
+                            <p class="text-muted mb-0">Used for withdrawals and security modifications</p>
+                        </div>
+                        <div class="mt-2">
+                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-outline-dark btn-sm active">
+                                    <input type="radio" name="options" id="option5" checked> Enable
+                                </label>
+
+                                <label class="btn btn-outline-dark btn-sm">
+                                    <input type="radio" name="options" id="option6"> Disable
+                                </label>
+                            </div>-->
+                    <!--end btn-group-->
+                    <!--</div>--> <!--end /div-->
+                    <!--</div>--><!--end media body-->
+                    <!--</div>--><!--end media-->
+                    <!--</td>
+
+            </tr>
+        </tbody>
+        </table>-->
+                    <!--end /table-->
+                </div><!--end /tableresponsive-->
+            </div><!--end card-body-->
+    </div><!--end card-->
+</div> <!-- end col -->
+
+<script>
+    $("#ddlLocation").select2({
+        placeholder: "Select Location",
+        dropdownAutoWidth: false
+    });
+</script>

@@ -1,0 +1,188 @@
+﻿<link href="../Content/assets/plugins/daterangepicker/daterangepicker.css" rel="stylesheet" />
+<link href="../Content/assets/plugins/select2/select2.min.css" rel="stylesheet" type="text/css" />
+<link href="../Content/assets/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css" rel="stylesheet" type="text/css" />
+<link href="../Content/assets/plugins/timepicker/bootstrap-material-datetimepicker.css" rel="stylesheet">
+<link href="../Content/assets/plugins/bootstrap-touchspin/css/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
+
+<link href="../Content/assets/plugins/sweet-alert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
+<link href="../Content/assets/plugins/sweet-alert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
+<link href="../Content/assets/plugins/animate/animate.css" rel="stylesheet" type="text/css">
+
+
+<!-- App css -->
+<link href="../Content/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="../Content/assets/css/icons.css" rel="stylesheet" type="text/css" />
+<link href="../Content/assets/css/metisMenu.min.css" rel="stylesheet" type="text/css" />
+<link href="../Content/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+<style>
+    @media only screen and (min-device-width : 200px) and (max-device-width : 768px) {
+        /* For mobile phones: */
+        /*[class*="col-"] {
+            width: 100%;
+            margin: 5px;
+        }*/
+
+
+        .BtnWidth {
+            width: 100%;
+            margin:4px;
+            text-align:center;
+        }
+
+        #navigationUrlHide {
+            display: none;
+        }
+    }
+</style>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="page-title-box">
+            <div class="float-right">
+                <ol class="breadcrumb" id="navigationUrlHide">
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">Power Up</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">User</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">Cart</a></li>
+
+                </ol>
+            </div>
+            <h4 class="page-title">Cart </h4>
+        </div><!--end page-title-box-->
+    </div><!--end col-->
+</div>
+
+
+<div class="row">
+
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <h3 class="mt-0 header-title mdi mdi-format-list-bulleted">Cart Item</h3>
+                    </div>
+                    <div class="col-lg-6">
+
+                    </div>
+                    <div class="col-lg-2">
+                        <button class="btn btn-primary BtnWidth"  id="sa-warning2" ng-click="BookingCardItem()" >
+                            Book Now
+                        </button>
+                    </div>
+                    <div class="col-lg-2">
+                        <button class="btn btn-danger text-center BtnWidth " ng-click="ClearCart()" >
+                            Clear Cart
+                        </button>
+                    </div>
+                </div>
+
+                <hr />
+                <div class="table-responsive">
+                    <table class="table table-bordered mb-0 table-centered">
+                        <thead>
+                            <tr>
+                                <th class="text-center">
+                                    <input type="checkbox" id="CheckId" name="checkId" ng-model="AllCheckBtn" ng-click="AllCheckEvent()" value="true">
+                                    <label for="checkId">All Check </label><br>   
+                                </th>
+                                <th class="text-center">SL No</th>
+                                <th class="text-center">Name</th>
+                                <th class="text-center">Port</th>
+                                <th class="text-center">Charging (%)</th>
+                                <th class="text-center">Charging Time</th>
+
+
+                                <th class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="cart in CartItemListFilter">
+                                <td class="text-center">
+                                    <input type="checkbox" style="height:30px;width:18px;border-radius:10px;" ng-click="CheckCatItem(cart)" ng-model="cart.IsCheck" />
+
+                                </td>
+                                <td class="text-center">{{$index + 1}}</td>
+                                <td class="text-center">{{cart.BatteryName}}</td>
+                                <td class="text-center">{{cart.PortName}}</td>
+                                <td class="text-center">{{cart.CahargingPercentage}}</td>
+                                <td class="text-center">{{cart.CagargingTime}}</td>
+
+
+                                <td class="text-center">
+
+                                    <button class="btn btn-danger" ng-click="RemoveCartItem(cart)"> X</button>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table><!--end /table-->
+                </div><!--end /tableresponsive-->
+            </div><!--end card-body-->
+        </div><!--end card-->
+    </div> <!-- end col -->
+</div> <!-- end row -->
+
+
+<script src="../Content/assets/js/jquery.min.js"></script>
+<script src="../Content/assets/js/bootstrap.bundle.min.js"></script>
+<script src="../Content/assets/js/metisMenu.min.js"></script>
+<script src="../Content/assets/js/waves.min.js"></script>
+<script src="../Content/assets/js/jquery.slimscroll.min.js"></script>
+
+<script src="../Content/assets/plugins/sweet-alert2/sweetalert2.min.js"></script>
+<script src="../Content/assets/pages/jquery.sweet-alert.init.js"></script>
+
+<!-- Plugins js -->
+<script src="../Content/assets/plugins/select2/select2.min.js"></script>
+<script src="../Content/assets/plugins/moment/moment.js"></script>
+<script src="../Content/assets/plugins/daterangepicker/daterangepicker.js"></script>
+<script src="../Content/assets/plugins/select2/select2.min.js"></script>
+<script src="../Content/assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+<script src="../Content/assets/plugins/timepicker/bootstrap-material-datetimepicker.js"></script>
+<script src="../Content/assets/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
+<script src="../Content/assets/plugins/bootstrap-touchspin/js/jquery.bootstrap-touchspin.min.js"></script>
+
+<script src="../Content/assets/pages/jquery.forms-advanced.js"></script>
+
+
+<script>
+
+    $('#sa-warning2').click(function () {
+
+        swal.fire({
+            title: 'Are you want to book these cart Items?',
+            // text: "You won't be able to revert this!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes',
+            cancelButtonText: 'No',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.value) {
+                swal.fire(
+                    'Order Booked Successfully!',
+                    /* 'Your file has been deleted.',*/
+                   
+                )
+            }
+            //else if (
+            //    // Read more about handling dismissals
+            //    result.dismiss === Swal.DismissReason.cancel
+            //)
+
+            //{
+            //    swal.fire(
+            //        'Order Cancelled!',
+                    
+            //    )
+            //}
+        })
+    });
+
+    //$("#date-start").datepicker({
+    //    dateFormat: 'dd/MM/yyyy'
+    //})
+
+
+</script>

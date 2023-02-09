@@ -1,0 +1,686 @@
+﻿<style>
+    .card-box {
+        position: relative;
+        color: #fff;
+        padding: 20px 10px 40px;
+        margin: 20px 0px;
+    }
+
+        .card-box:hover {
+            text-decoration: none;
+            color: #f1f1f1;
+        }
+
+            .card-box:hover .icon i {
+                font-size: 100px;
+                transition: 1s;
+                -webkit-transition: 1s;
+            }
+
+        .card-box .inner {
+            padding: 5px 10px 0 10px;
+        }
+
+        .card-box h3 {
+            font-size: 27px;
+            font-weight: bold;
+            margin: 0 0 8px 0;
+            white-space: nowrap;
+            padding: 0;
+            text-align: left;
+        }
+
+        .card-box p {
+            font-size: 15px;
+        }
+
+        .card-box .icon {
+            position: absolute;
+            top: auto;
+            bottom: 10px;
+            right: 5px;
+            z-index: 0;
+            font-size: 72px;
+            color: rgba(0, 0, 0, 0.15);
+        }
+
+        .card-box .card-box-footer {
+            position: absolute;
+            left: 0px;
+            bottom: 0px;
+            text-align: center;
+            padding: 3px 0;
+            color: rgba(255, 255, 255, 0.8);
+            background: rgba(0, 0, 0, 0.1);
+            width: 100%;
+            text-decoration: none;
+        }
+
+        .card-box:hover .card-box-footer {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+    .bg-blue {
+        background-color: #00c0ef !important;
+    }
+
+    .bg-green {
+        background-color: #00a65a !important;
+        width: 300px;
+    }
+
+    .bg-LightBlue {
+        background-color: #0dc8de !important;
+        width: 300px;
+        box-shadow: 0px 5px 5px 0.25px rgb(13 200 222 / 50%);
+    }
+
+    .bg-orange {
+        background-color: #f39c12 !important;
+    }
+
+    .bg-red {
+        background-color: #d9534f !important;
+    }
+
+    .flexcontainer {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .inner p:hover {
+        /*background-color: #00e673;*/
+        background-color: #00ffff;
+        /*padding: 5px;*/
+        border-radius: 5px;
+    }
+
+    .btnPort {
+        width: 160px;
+    }
+
+    @media only screen and (max-width: 768px) {
+        /* For mobile phones: */
+        [class*="col-"] {
+            width: 100%;
+            margin: 5px;
+        }
+
+        .BtnWidth {
+            width: 100%;
+        }
+    }
+
+    @media only screen and (min-device-width : 200px) and (max-device-width : 768px) {
+        /* For mobile phones: */
+        [class*="col-"] {
+            width: 100%;
+            margin: 5px;
+        }
+
+
+        .BtnWidth {
+            width: 100%;
+        }
+
+        #navigationUrlHide {
+            display: none;
+        }
+    }
+</style>
+
+
+<link href="../Content/assets/plugins/treeview/themes/default/style.css" rel="stylesheet">
+<link href="../Content/assets/plugins/treeview/file-explore.css" rel="stylesheet">
+
+<link href="../Content/assets/plugins/sweet-alert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
+<link href="../Content/assets/plugins/sweet-alert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
+<link href="../Content/assets/plugins/animate/animate.css" rel="stylesheet" type="text/css">
+
+<link href="../Content/assets/plugins/daterangepicker/daterangepicker.css" rel="stylesheet" />
+<link href="../Content/assets/plugins/select2/select2.min.css" rel="stylesheet" type="text/css" />
+<link href="../Content/assets/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css" rel="stylesheet" type="text/css" />
+<link href="../Content/assets/plugins/timepicker/bootstrap-material-datetimepicker.css" rel="stylesheet">
+<link href="../Content/assets/plugins/bootstrap-touchspin/css/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
+
+
+<!-- App css -->
+<link href="../Content/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="../Content/assets/css/icons.css" rel="stylesheet" type="text/css" />
+<link href="../Content/assets/css/metisMenu.min.css" rel="stylesheet" type="text/css" />
+<link href="../Content/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+<form name="PosDashboardForm" novalidate>
+
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-title-box">
+                <div class="float-right">
+                    <ol class="breadcrumb" id="navigationUrlHide">
+                        <li class="breadcrumb-item"><a href="javascript:void(0);">Power Up</a></li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0);">User</a></li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0);">Battery Booking</a></li>
+
+                    </ol>
+                </div>
+                <h4 class="page-title">Battery Booking</h4>
+            </div><!--end page-title-box-->
+        </div><!--end col-->
+    </div>
+
+
+    <!--<div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-4 ColumnBtnWidth">
+                            <ul class="nav nav-pills mb-0">
+                                <li class="nav-item">
+                                    <a class="nav-link active BtnWidth"  data-toggle="pill" href="">Battery Booking</a>
+                                </li>
+                              
+
+                            </ul>
+                        </div>
+                        <div class="col-lg-4 ColumnBtnWidth">
+                        </div>
+                        <div class="col-lg-4 ColumnBtnWidth">
+                            <div class="input-group">
+                                <span class="input-group-prepend">
+                                    <button type="button" class="btn btn-gradient-primary"><i class="fas fa-search"></i></button>
+                                </span>
+                                <input type="text" id="example-input1-group2" name="example-input1-group2" class="form-control" placeholder="Search ">
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>-->
+
+    <div class="row" ng-show="BatteryBookingShow">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+
+                    <div class="row">
+                        
+                        <div class="col-md-8">
+
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <span class="input-group-prepend">
+                                    <button type="button" class="btn btn-gradient-primary"><i class="fas fa-search"></i></button>
+                                </span>
+                                <input type="text" id="example-input1-group2" name="example-input1-group2" class="form-control" placeholder="Search ">
+                            </div>
+                        </div>
+                    </div>
+                    
+                   <br />
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="input-group">
+                                <select id="ddlLocation1" class="form-control" ng-model="ddlLocation" ng-options="Location.LocationName for Location in LocationList track by Location.id" ng-change="getLocker(ddlLocation.id);">
+                                    <option value="">Select Location</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+
+                        </div>
+                        <div class="col-md-2">
+                            <ul class="list-unstyled topbar-nav float-right mb-0">
+                                <li class="dropdown notification-list">
+                                    <a onclick="cardItemShow()" id="ShowaddToCartItemHide" class="nav-link dropdown-toggle arrow-none waves-light waves-effect" data-toggle="dropdown" role="button"
+                                       aria-haspopup="false" aria-expanded="false">
+                                        <i class="dripicons-cart noti-icon"></i>
+                                        <span class="badge badge-danger badge-pill noti-icon-badge">{{SendDataAddToCartTopBar.length}}</span>
+                                    </a>
+                                    <div id="ShowaddToCartItem" class="dropdown-menu dropdown-menu-right dropdown-lg hide" style="width:250px;">
+                                        <h6 style="margin-left: 10px; ">
+                                            Battery Info ({{SendDataAddToCartTopBar.length}})
+                                        </h6>
+
+                                        <div ng-repeat="cart in SendDataAddToCartTopBar track by $index">
+                                            <p>
+
+                                                <span style="margin-left: 10px; padding: 2px;word-spacing:5px;font-size:14px;"><span style="width:65%"> <span style="height:20%">{{cart.BatteryName}}</span> <span style="width:20%"> {{cart.PortName}}</span> <span style="width:20%"> {{cart.CahargingPercentage}}</span></span> <span style=" width:30%">  <button class="btn btn-default" style="width:20%;color:red;font-weight:bold;font-size:16px;" onclick="RemoveOnClick()" ng-click="removecart(cart)">X</button></span>  </span>
+
+                                            </p>
+
+
+                                        </div>
+                                        <a href="#/CartItem" class="dropdown-item text-center text-primary" ng-click="BatterySendViewDataInPage()">
+                                            View all <i class="fi-arrow-right"></i>
+                                        </a>
+
+
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+
+                            <div style="padding:10px">
+                                <h4 ng-show="LocationTitle" class="header-title" style="padding-top:5px">Charging Swap Stations</h4>
+                                <div ng-repeat="aLocker in LockerList">
+
+                                    <!--<div class="bg-LightBlue" style="border-radius:10px;" ng-click="ShowPlug(aLocker);">
+                                        <div class="inner">
+                                            <p style="text-align: center;color:white; height: auto; font-size: 20px">
+                                                {{aLocker.LockerName}}&nbsp;<i class="fa fa-arrow-circle-right"></i>
+                                            </p>
+                                        </div>
+                                    </div>-->
+
+                                    <button class="btn btn-success" ng-click="ShowPlug(aLocker);" style="width: 100%; margin-top: 10px; border-radius: 15px; color: white">
+                                        {{aLocker.LockerName}}&nbsp;<i class="fa fa-arrow-circle-right"></i>
+                                    </button>
+
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                        <div class="col-md-9 " ng-show="isShowPlug">
+
+                            <div class="row">
+
+                                <table class="responstable table-hover table-responsive" style="width:100%">
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center" style="width:18%;" ng-click="PortDetailBooking(PortList[0])">
+                                                <button class="btn btn-secondary btnPort"  style="margin: 3px; ">
+
+                                                    <span   ng-click="PortDetail(PortList[0]);"><span> {{PortList[0].PortName}}</span> <span style="font-size: 18px; margin-left: 30px; "> <i ng-show="checkPlus" class="fa fa-plus"></i>  <i style="color:black;" ng-show="checkMinus" class="fa fa-check"></i> </span></span>
+                                                    <p> Charging (%) : {{PortList[0].CahargingPercentage}}</p>
+                                                    <p style="margin-top:-15px">Charging Time : {{PortList[0].CagargingTime}}</p>
+                                                </button>
+
+                                            </td>
+                                            <td class="text-center" style="width:18%" ng-click="PortDetailBooking(PortList[1])">
+                                                <button class="btn btn-secondary btnPort" style="margin:3px;">
+                                                    <span ng-click="PortDetail(PortList[1]);"><span> {{PortList[1].PortName}}</span> <span style="font-size:18px;margin-left:30px;"> <i ng-show="checkPlus1" class="fa fa-plus"></i> <i style="color:black;" ng-show="checkMinus1" class="fa fa-check"></i></span></span>
+                                                    <p> Charging (%) : {{PortList[1].CahargingPercentage}}</p>
+                                                    <p style="margin-top:-15px">Charging Time : {{PortList[1].CagargingTime}}</p>
+                                                </button>
+                                            </td>
+                                            <td class="text-center" style="width:18%" ng-click="PortDetailBooking(PortList[2])">
+                                                <button class="btn btn-secondary btnPort" style="margin:3px;">
+                                                    <span ng-click="PortDetail(PortList[2]);"><span> {{PortList[2].PortName}}</span> <span style="font-size:18px;margin-left:30px;"> <i ng-show="checkPlus2" class="fa fa-plus"></i> <i style="color:black;" ng-show="checkMinus2" class="fa fa-check"></i></span></span>
+                                                    <p> Charging (%) : {{PortList[2].CahargingPercentage}}</p>
+                                                    <p style="margin-top:-15px">Charging Time : {{PortList[2].CagargingTime}}</p>
+                                                </button>
+                                            </td>
+                                            <td class="text-center" style="width:18%" ng-click="PortDetailBooking(PortList[3])">
+                                                <button class="btn btn-secondary btnPort" style="margin:3px;">
+                                                    <span ng-click="PortDetail(PortList[3]);"><span> {{PortList[3].PortName}}</span> <span style="font-size:18px;margin-left:30px;"> <i ng-show="checkPlus3" class="fa fa-plus"></i> <i style="color:black;" ng-show="checkMinus3" class="fa fa-check"></i></span></span>
+                                                    <p> Charging (%) : {{PortList[3].CahargingPercentage}}</p>
+                                                    <p style="margin-top:-15px">Charging Time : {{PortList[3].CagargingTime}}</p>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center" style="width:18%" >
+                                                <button class="btn btn-danger btnPort" style="margin:5px; height:100px;">
+                                                    <span><span> {{PortList[4].PortName}}</span> <span style="font-size:18px;margin-left:30px;"> </span></span>
+                                                    <p> Charging (%) : {{PortList[4].CahargingPercentage}}</p>
+                                                    <p style="margin-top:-15px">Charging Time : {{PortList[4].CagargingTime}}</p>
+                                                    <p style="margin-top:-15px"> Not Available</p>
+                                                </button>
+                                            </td>
+                                            <td class="text-center " style="width:18%" ng-click="PortDetailBooking(PortList[5])">
+                                                <button class="btn btn-secondary btnPort" style="margin:5px;">
+                                                    <span ng-click="PortDetail(PortList[5]);"><span> {{PortList[5].PortName}}</span> <span style="font-size:18px;margin-left:30px;"> <i ng-show="checkPlus4" class="fa fa-plus"></i> <i style="color:black;" ng-show="checkMinus4" class="fa fa-check"></i></span></span>
+                                                    <p> Charging (%) : {{PortList[5].CahargingPercentage}}</p>
+                                                    <p style="margin-top:-15px">Charging Time : {{PortList[5].CagargingTime}}</p>
+                                                </button>
+                                            </td>
+                                            <td class="text-center" style="width:18%" ng-click="PortDetailBooking(PortList[6])">
+                                                <button class="btn btn-secondary btnPort" style="margin:5px;">
+                                                    <span ng-click="PortDetail(PortList[6]);"><span> {{PortList[6].PortName}}</span> <span style="font-size:18px;margin-left:30px;"> <i ng-show="checkPlus5" class="fa fa-plus"></i> <i style="color:black;" ng-show="checkMinus5" class="fa fa-check"></i></span></span>
+                                                    <p> Charging (%) : {{PortList[6].CahargingPercentage}}</p>
+                                                    <p style="margin-top:-15px">Charging Time : {{PortList[6].CagargingTime}}</p>
+                                                </button>
+                                            </td>
+                                            <td class="text-center" style="width:18%">
+                                                <!--<button class="btn btn-danger btnPort" style="margin:5px;">
+
+                                                    <br />
+
+                                                    <span style="margin-top:15px"><span> {{PortList[7].PortName}}</span> </span>
+
+                                                    <p> Not Available</p>
+                                                </button>-->
+
+                                                <button class="btn btn-danger btnPort" style="margin:5px; height:100px;">
+                                                    <span><span> {{PortList[7].PortName}}</span> <span style="font-size:18px;margin-left:30px;"> </span></span>
+                                                    <p> Charging (%) : {{PortList[7].CahargingPercentage}}</p>
+                                                    <p style="margin-top:-15px">Charging Time : {{PortList[7].CagargingTime}}</p>
+                                                    <p style="margin-top:-15px"> Not Available</p>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center" style="width:18%">
+                                                <button class="btn btn-secondary btnPort" style="margin:5px;" ng-click="PortDetailBooking(PortList[8])">
+                                                    <span ng-click="PortDetail(PortList[8]);"><span> {{PortList[8].PortName}}</span> <span style="font-size:18px;margin-left:30px;"> <i ng-show="checkPlus6" class="fa fa-plus"></i> <i style="color:black;" ng-show="checkMinus6" class="fa fa-check"></i> </span></span>
+                                                    <p> Charging (%) : {{PortList[8].CahargingPercentage}}</p>
+                                                    <p style="margin-top:-15px">Charging Time : {{PortList[8].CagargingTime}}</p>
+                                                </button>
+                                            </td>
+                                            <td class="text-center" style="width:18%" ng-click="PortDetailBooking(PortList[9])">
+                                                <button class="btn btn-secondary btnPort" style="margin:5px;">
+                                                    <span ng-click="PortDetail(PortList[9]);"><span> {{PortList[9].PortName}}</span> <span style="font-size:18px;margin-left:30px;"> <i ng-show="checkPlus7" class="fa fa-plus"></i> <i style="color:black;" ng-show="checkMinus7" class="fa fa-check"></i></span></span>
+
+                                                    <p> Charging (%) : {{PortList[9].CahargingPercentage}}</p>
+                                                    <p style="margin-top:-15px">Charging Time : {{PortList[9].CagargingTime}}</p>
+                                                </button>
+                                            </td>
+                                            <td class="text-center" style="width:18%" ng-click="PortDetailBooking(PortList[10])">
+                                                <button class="btn btn-secondary btnPort" style="margin:5px;">
+                                                    <span ng-click="PortDetail(PortList[10]);"><span> {{PortList[10].PortName}}</span> <span style="font-size:18px;margin-left:30px;"> <i  ng-show="checkPlus8" class="fa fa-plus"></i> <i style="color:black;" ng-show="checkMinus8" class="fa fa-check"></i></span></span>
+                                                    <p> Charging (%) : {{PortList[10].CahargingPercentage}}</p>
+                                                    <p style="margin-top:-15px">Charging Time : {{PortList[10].CagargingTime}}</p>
+                                                </button>
+                                            </td>
+                                            <td class="text-center" style="width:18%" ng-click="PortDetailBooking(PortList[11])">
+                                                <button class="btn btn-secondary btnPort" style="margin:5px;">
+                                                    <span ng-click="PortDetail(PortList[11]);"><span> {{PortList[11].PortName}}</span> <span style="font-size:18px;margin-left:30px;"> <i ng-show="checkPlus9" class="fa fa-plus"></i> <i style="color:black;" ng-show="checkMinus9" class="fa fa-check"></i></span></span>
+                                                    <p> Charging (%) : {{PortList[11].CahargingPercentage}}</p>
+                                                    <p style="margin-top:-15px">Charging Time : {{PortList[11].CagargingTime}}</p>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center" style="width:18%">
+                                                <!--<button class="btn btn-danger btnPort" style="margin:5px;">
+
+        <br />
+
+        <span style="margin-top:15px"><span> {{PortList[12].PortName}}</span> </span>
+
+        <p> Not Available</p>
+    </button>-->
+                                                <button class="btn btn-danger btnPort" style="margin:5px; height:100px;">
+                                                    <span><span> {{PortList[12].PortName}}</span> <span style="font-size:18px;margin-left:30px;"> </span></span>
+                                                    <p> Charging (%) : {{PortList[12].CahargingPercentage}}</p>
+                                                    <p style="margin-top:-15px">Charging Time : {{PortList[12].CagargingTime}}</p>
+                                                    <p style="margin-top:-15px"> Not Available</p>
+                                                </button>
+                                            </td>
+                                            <td class="text-center" style="width:18%" ng-click="PortDetailBooking(PortList[13])">
+                                                <button class="btn btn-secondary btnPort" style="margin:5px;">
+                                                    <span ng-click="PortDetail(PortList[13]);"><span> {{PortList[13].PortName}}</span> <span style="font-size:18px;margin-left:30px;"> <i ng-show="checkPlus11"  class="fa fa-plus"></i> <i style="color:black;" ng-show="checkMinus11" class="fa fa-check"></i> </span></span>
+                                                    <p> Charging (%) : {{PortList[13].CahargingPercentage}}</p>
+                                                    <p style="margin-top:-15px">Charging Time : {{PortList[13].CagargingTime}}</p>
+                                                </button>
+                                            </td>
+                                            <td class="text-center" style="width:18%" ng-click="PortDetailBooking(PortList[14])">
+                                                <button class="btn btn-secondary btnPort" style="margin:5px;">
+                                                    <span ng-click="PortDetail(PortList[14]);"><span> {{PortList[14].PortName}}</span> <span style="font-size:18px;margin-left:30px;"> <i ng-show="checkPlus12"  class="fa fa-plus"></i> <i style="color:black;" ng-show="checkMinus12" class="fa fa-check"></i></span></span>
+                                                    <p> Charging (%) : {{PortList[14].CahargingPercentage}}</p>
+                                                    <p style="margin-top:-15px">Charging Time : {{PortList[14].CagargingTime}}</p>
+                                                </button>
+                                            </td>
+                                            <td class="text-center" style="width:18%">
+                                                <button class="btn btn-danger btnPort" style="margin:5px; height:100px;">
+                                                    <span><span> {{PortList[15].PortName}}</span> <span style="font-size:18px;margin-left:30px;"> </span></span>
+                                                    <p> Charging (%) : {{PortList[15].CahargingPercentage}}</p>
+                                                    <p style="margin-top:-15px">Charging Time : {{PortList[15].CagargingTime}}</p>
+                                                    <p style="margin-top:-15px"> Not Available</p>
+                                                </button>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <br />
+                            </div>
+                            <div class="row" ng-show="isShowBatteryDetail">
+
+                                <div class="container-fluid">
+                                    <!-- Page-Title -->
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="page-title-box">
+                                                <h4 class="page-title">Port-Detail</h4>
+                                            </div><!--end page-title-box-->
+                                        </div><!--end col-->
+                                    </div>
+                                    <!-- end page title end breadcrumb -->
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-lg-6 align-self-center">
+                                                            <div class="single-pro-detail">
+                                                                <p class="mb-1"><h3><u><b>{{PortName}}</b></u></h3></p>
+                                                                <!--<div class="custom-border mb-3"></div>-->
+                                                                <h3 class="pro-title">{{BatteryName}}</h3>
+                                                                <p class="text-muted mb-0">{{BatteryName}}  All Detail Here.</p>
+                                                                <h6 class="text-muted font-13">Features :</h6>
+                                                                <ul class="list-unstyled pro-features border-0">
+                                                                    <li>Output Voltage: 12 Volt.</li>
+                                                                    <li>Size: (4" X 4") cm.</li>
+                                                                    <li>Weight: 6 Kg .</li>
+                                                                </ul>
+
+                                                            </div>
+                                                        </div><!--end col-->
+                                                        <div class="col-lg-6">
+                                                            <div class="quantity mt-3 ">
+                                                                <!--<a href="" class="btn btn-gradient-primary text-white px-4 d-inline-block"><i class="mdi mdi-cart mr-2"></i>Book Now</a>-->
+
+                                                                <!--<i class="mdi mdi-circle-outline mr-1 text-warning"></i>-->
+                                                                <button type="button" class="btn btn-gradient-primary waves-effect waves-light" id="sa-warning1">Book This Battery</button>
+
+                                                            </div>
+                                                        </div>
+                                                    </div><!--end row-->
+                                                </div><!--end card-body-->
+                                            </div><!--end card-->
+                                        </div><!--end col-->
+                                    </div><!--end row-->
+
+                                </div><!-- container -->
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div><!--end card-body-->
+            </div><!--end card-->
+        </div><!--end col-->
+
+    </div><!--end row-->
+
+    <!--<div class="row" ng-show="BatteryBookingInfoShow">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div id="jstree">
+                                <ul>
+                                    <li style="margin-top:10px;" class="jstree-open" data-jstree='{"icon":"fas fa-map-marker-alt text-primary font-18"}'>
+                                        Location
+                                    </li>
+                                    <li ng-repeat="location in LocationList" data-jstree='{"icon":"fas fa-map-marker-alt text-primary font-18"}' class="jstree-open" id="LocationId">
+
+                                        <a ng-click="ShowPortNumber(location)"> {{location.LocationName}}</a>
+                                        <ul ng-repeat="location in PortList">
+                                            <li data-jstree='{"icon":"fa fa-folder text-warning font-18"}'>
+                                                {{location.PortName}}
+
+                                            </li>-->
+                                            <!--<li data-jstree='{"icon":"fa fa-folder text-warning font-18"}'>
+                                            {{location.PortName}}-->
+                                            <!--<ul>
+                                            <li data-jstree='{"icon":"fa fa-folder text-warning font-18"}'>child node 1</li>
+                                             <li data-jstree='{"icon":"fa fa-folder text-warning font-18"}'>child node 2</li>
+                                            </ul>-->
+                                            <!--</li>-->
+
+
+                                        <!--</ul>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-8">
+                            <div class="card" id="ItemBettaryDetailShow">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-6 align-self-center">
+                                            <div class="single-pro-detail">
+                                                <p class="mb-1"><h3><u><b>{{PortName}}</b></u></h3></p>-->
+                                                <!--<div class="custom-border mb-3"></div>-->
+                                                <!--<h3 class="pro-title">{{BatteryName}}</h3>
+                                                <p class="text-muted mb-0">{{BatteryName}}  All Detail Here.</p>
+                                                <h6 class="text-muted font-13">Features :</h6>
+                                                <ul class="list-unstyled pro-features border-0">
+                                                    <li>Output Voltage: 12 Volt.</li>
+                                                    <li>Size: (4" X 4") cm.</li>
+                                                    <li>Weight: 6 Kg .</li>
+                                                </ul>
+
+                                            </div>
+                                        </div>--><!--end col-->
+                                        <!--<div class="col-lg-6">
+                                            <div class="quantity mt-3 ">
+                                                <a href="" class="btn btn-gradient-primary text-white px-4 d-inline-block"><i class="mdi mdi-cart mr-2"></i>Book Now</a>
+                                            </div>
+                                        </div>
+                                    </div>--><!--end row-->
+                                <!--</div>--><!--end card-body-->
+                            <!--</div>--><!--end card-->
+                        <!--</div>
+                    </div>
+
+
+
+                </div>--><!--end card-body-->
+            <!--</div>--><!--end card-->
+        <!--</div>--><!--end col-->
+
+    <!--</div>--><!--end row-->
+
+</form>
+<script>
+    //$("#ddlLocation").select2({
+    //    placeholder: "Select Location",
+    //    dropdownAutoWidth: false
+    //});
+</script>
+
+<script src="../Content/assets/js/jquery.min.js"></script>
+<script src="../Content/assets/js/bootstrap.bundle.min.js"></script>
+<script src="../Content/assets/js/metisMenu.min.js"></script>
+<script src="../Content/assets/js/waves.min.js"></script>
+<script src="../Content/assets/js/jquery.slimscroll.min.js"></script>
+
+<!-- Plugins js -->
+<script src="../Content/assets/plugins/select2/select2.min.js"></script>
+<script src="../Content/assets/plugins/moment/moment.js"></script>
+<script src="../Content/assets/plugins/daterangepicker/daterangepicker.js"></script>
+<!--<script src="../Content/assets/plugins/select2/select2.min.js"></script>-->
+<script src="../Content/assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+<script src="../Content/assets/plugins/timepicker/bootstrap-material-datetimepicker.js"></script>
+<script src="../Content/assets/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
+<script src="../Content/assets/plugins/bootstrap-touchspin/js/jquery.bootstrap-touchspin.min.js"></script>
+
+<script src="../Content/assets/pages/jquery.forms-advanced.js"></script>
+
+
+<script src="../Content/assets/plugins/treeview/jstree.min.js"></script>
+<script src="../Content/assets/plugins/treeview/file-explore.js"></script>
+<script src="../Content/assets/pages/jquery.treeview.init.js"></script>
+<script src="../Content/assets/plugins/sweet-alert2/sweetalert2.min.js"></script>
+<script src="../Content/assets/pages/jquery.sweet-alert.init.js"></script>
+<script>
+
+    $('#sa-warning1').click(function () {
+
+        swal.fire({
+            title: 'Are you want to book this Battery ?',
+            // text: "You won't be able to revert this!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes',
+            cancelButtonText: 'No',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.value) {
+                swal.fire(
+                    'Order Booked Successfully!'
+                   
+                )
+            }
+            //else if (
+            //    // Read more about handling dismissals
+            //    result.dismiss === Swal.DismissReason.cancel
+            //) {
+            //    swal.fire(
+            //        'Order Cancelled!'
+                    
+            //    )
+            //}
+        })
+    });
+
+
+    //$(document).click(function () {
+
+    //    $('#ShowaddToCartItem').addClass('hide').removeClass('show');
+
+    //});
+
+    $(document).click(function (evt) {
+        if (evt.target.offsetParent.id == "ShowaddToCartItem") {
+            return;
+        } else {
+            $('#ShowaddToCartItem').addClass('hide').removeClass('show');
+            /* $('#ShowaddToCartItem').addClass('hide').removeClass('show');*/
+        }
+    });
+
+    function cardItemShow() {
+        var className = $('#ShowaddToCartItem').attr('class');
+        var mth = className.match(/hide/g);
+        if (mth == 'hide') {
+            $('#ShowaddToCartItem').addClass('show').removeClass('hide');
+
+        } else {
+            $('#ShowaddToCartItem').addClass('hide').removeClass('show');
+        }
+
+    }
+
+    //function RemoveOnClick() {
+    //    $('#ShowaddToCartItem').show();
+
+    //}
+
+
+
+
+</script>

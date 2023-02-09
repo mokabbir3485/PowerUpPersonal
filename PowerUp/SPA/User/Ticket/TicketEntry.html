@@ -1,0 +1,279 @@
+﻿<!--<link href="../Content/assets/plugins/daterangepicker/daterangepicker.css" rel="stylesheet" />
+<link href="../Content/assets/plugins/select2/select2.min.css" rel="stylesheet" type="text/css" />
+<link href="../Content/assets/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css" rel="stylesheet" type="text/css" />
+<link href="../Content/assets/plugins/timepicker/bootstrap-material-datetimepicker.css" rel="stylesheet">
+<link href="../Content/assets/plugins/bootstrap-touchspin/css/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />-->
+<!-- App css -->
+<!--<link href="../Content/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="../Content/assets/css/icons.css" rel="stylesheet" type="text/css" />
+<link href="../Content/assets/css/metisMenu.min.css" rel="stylesheet" type="text/css" />
+<link href="../Content/assets/css/style.css" rel="stylesheet" type="text/css" />-->
+
+
+<style>
+    @media only screen and (max-width: 768px) {
+        /* For mobile phones: */
+        [class*="col-"] {
+            width: 100%;
+          /* // margin: 5px;*/
+        }
+
+        .BtnWidth {
+            width: 100%;
+        }
+    }
+
+    @media only screen and (min-device-width : 200px) and (max-device-width : 767px) {
+        /* For mobile phones: */
+       /* [class*="col-"] {
+            width: 100%;
+            margin: 4px;
+        }*/
+        .ListGridMediaQuery{
+            margin-top:5px;
+        }
+      
+
+        .BtnWidth {
+            width: 100%;
+            margin: 4px;
+        }
+        #navigationUrlHide{
+            display:none;
+        }
+    }
+    @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+        /* For mobile phones: */
+     
+        .BtnWidth {
+            width: 100%;
+            margin: 4px;
+        }
+
+       
+    }
+
+    @media only screen and (min-device-width : 366px) and (max-device-width : 772) {
+
+    }
+
+  
+</style>
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="page-title-box">
+            <div class="float-right">
+                <ol class="breadcrumb" id="navigationUrlHide">
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">Power Up</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">User</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">Ticket</a></li>
+
+                </ol>
+            </div>
+            <h4 class="page-title">Ticket</h4>
+        </div><!--end page-title-box-->
+    </div><!--end col-->
+</div>
+<div class=row>
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="mt-0 header-title">Create a new Ticket</h4>
+
+                <form>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input class="form-control" ng-model="TicketEntry.CustomerName" type="text" id="name" placeholder="Name">
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input class="form-control" ng-model="TicketEntry.Email" type="email" id="example-email-input3" placeholder="Email">
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input class="form-control" ng-model="TicketEntry.Subject" type="text" id="subject2" placeholder="Subject">
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="input-group">
+                                <textarea class="form-control" ng-model="TicketEntry.Message" id="exampleFormControlTextarea1" rows="4" placeholder="Enter Your message"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+
+
+                    <!--<div class="form-group row">
+        <div class="col-sm-12 col-lg-2 ">
+            <button style="width:100%" type="submit" ng-click="SaveTicket()" class="btn btn-gradient-primary BtnWidth">
+                <i class="fas fa-ticket-alt"> </i>  Send Ticket
+            </button>
+        </div>
+        <div class="col-sm-12 col-lg-2 ">
+            <button style="width:100%" type="submit" ng-click="ResetData()" class="btn btn-danger BtnWidth">
+                Reset
+            </button>
+        </div>
+        <div class="col-sm-12 col-lg-2 ">
+            <button style="width:100%" type="submit" ng-click="SetFillData()" class="btn btn-success BtnWidth">
+                Fill Data
+            </button>
+        </div>
+    </div>-->
+
+
+
+                    <div class="row">
+                        <div class="col-6 col-xs-6 col-sm-6 col-md-2 col-lg-2 MediaBtnWidth">
+                            <div class="row">
+                                <div class="col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 " >
+                                    <button class="btn btn-success MediaBtnWidth" style="padding:5px;" ng-click="SaveTicket()"> Save</button>
+                                </div>
+                                <div class="col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                    <button class="btn btn-danger MediaBtnWidth" style="padding:5px;" ng-click="ResetData()"> Reset</button>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-6 col-xs-6 col-sm-6 col-md-2 col-lg-2 MediaBtnWidth">
+                            <button class="btn btn-Info MediaBtnWidth" style="padding:5px;" ng-click="SetFillData()"> Fill In Box</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div><!--end card-body-->
+        </div><!--end card-->
+    </div><!--end col-->
+</div>
+
+
+<div class="row">
+
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+
+                <h3 class="mt-0 header-title mdi mdi-format-list-bulleted"> Ticket List</h3>
+                <hr />
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="input-group ListGridMediaQuery">
+                            <span class="input-group-prepend">
+                                <button type="button" class="btn btn-gradient-primary"><i class="fas fa-calendar"></i></button>
+                            </span>
+                            <input type="text" id="date-start" name="example-input1-group2" class="form-control " placeholder="Form Date" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="input-group ListGridMediaQuery">
+                            <span class="input-group-prepend">
+                                <button type="button" class="btn btn-gradient-primary"><i class="fas fa-calendar"></i></button>
+                            </span>
+                            <input type="text" id="date-end" name="example-input1-group2" class="form-control formDate " placeholder="To Date" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group ListGridMediaQuery">
+                            <span class="input-group-prepend">
+                                <button type="button" class="btn btn-gradient-primary"><i class="fas fa-search"></i></button>
+                            </span>
+                            <input type="text" id="example-input1-group2" name="example-input1-group2" class="form-control ListGridMediaQuery" placeholder="Search">
+                        </div>
+                    </div>
+                    <div class="col-md-2  ListGridMediaQuery">
+                        <button class="btn btn-danger" style="width:100%;">Clear</button>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <div class="table-responsive">
+                    <table class="table table-bordered mb-0 table-centered">
+                        <thead>
+                            <tr>
+                                <th class="text-center">SL No</th>
+                                <th class="text-center">Name</th>
+                                <th class="text-center">Email</th>
+                                <th class="text-center">Subject</th>
+                                <th class="text-center">Date</th>
+                                <th class="text-center">Status</th>
+
+
+                                <th class="text-center" colspan="3">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center">1</td>
+                                <td class="text-center">Abir</td>
+                                <td class="text-center">Short Circuit</td>
+                                <td class="text-center">abir@gmail.com</td>
+                                <td class="text-center">4/13/2022</td>
+
+
+                                <td class="text-center">
+                                    <span class="badge badge-soft-success">Resolved</span>
+                                    <!--<span class="badge badge-soft-danger">Rejected</span>-->
+                                </td>
+
+
+                                <td class="text-center" style="border-right:hidden">
+                                    <button class="btn btn-success BtnWidth"> <i class="fa fa-edit"></i>Edit</button>
+                                </td>
+                                <td class="text-center" style="border-right:hidden">
+                                    <button class="btn btn-danger BtnWidth"> <i class="fa fa-edit"></i>Delete</button>
+                                </td>
+                                <td class="text-center" >
+                            
+                                    <button class="btn btn-primary BtnWidth"><i class="fa fa-print"></i> Report</button>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table><!--end /table-->
+                </div><!--end /tableresponsive-->
+            </div><!--end card-body-->
+        </div><!--end card-->
+    </div> <!-- end col -->
+</div> <!-- end row -->
+<!--<script src="../Content/assets/js/jquery.min.js"></script>
+<script src="../Content/assets/js/bootstrap.bundle.min.js"></script>
+<script src="../Content/assets/js/metisMenu.min.js"></script>
+<script src="../Content/assets/js/waves.min.js"></script>
+<script src="../Content/assets/js/jquery.slimscroll.min.js"></script>-->
+<!-- Plugins js -->
+<!--<script src="../Content/assets/plugins/select2/select2.min.js"></script>
+<script src="../Content/assets/plugins/moment/moment.js"></script>
+<script src="../Content/assets/plugins/daterangepicker/daterangepicker.js"></script>
+<script src="../Content/assets/plugins/select2/select2.min.js"></script>
+<script src="../Content/assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+<script src="../Content/assets/plugins/timepicker/bootstrap-material-datetimepicker.js"></script>
+<script src="../Content/assets/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
+<script src="../Content/assets/plugins/bootstrap-touchspin/js/jquery.bootstrap-touchspin.min.js"></script>
+
+<script src="../Content/assets/pages/jquery.forms-advanced.js"></script>-->
+
+
+
+<script>
+    //$("#date-start").datepicker({
+    //    dateFormat: 'dd/MM/yyyy'
+    //})
+
+
+</script>

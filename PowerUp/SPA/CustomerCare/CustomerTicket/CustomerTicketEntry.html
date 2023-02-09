@@ -1,0 +1,151 @@
+﻿
+<style>
+    @media only screen and (min-device-width : 200px) and (max-device-width : 767px) {
+        /* For mobile phones: */
+        [class*="col-"] {
+            width: 100%;
+            margin: 5px;
+        }
+
+        .BtnWidth {
+            width: 100%;
+            margin:2px;
+        }
+
+        #navigationUrlHide {
+            display: none;
+        }
+    }
+</style>
+<form name="AddBatteryForm">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-title-box">
+                <div class="float-right">
+                    <ol class="breadcrumb" id="navigationUrlHide">
+                        <li class="breadcrumb-item"><a href="javascript:void(0);">Power Up</a></li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0);">Customer Care</a></li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0);">Customer Ticket</a></li>
+
+                    </ol>
+                </div>
+                <h4 class="page-title">Customer Ticket</h4>
+            </div><!--end page-title-box-->
+        </div><!--end col-->
+    </div>
+
+    <!--<h4 class="page-title">Customer Queries</h4>-->
+
+    <div class="row">
+        <div class="col-md-12 col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-8">
+
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <span class="input-group-prepend">
+                                    <button type="button" class="btn btn-gradient-primary"><i class="fas fa-search"></i></button>
+                                </span>
+                                <input type="text" id="example-input1-group2" name="example-input1-group2" class="form-control" placeholder="Search">
+                            </div>
+                        </div>
+                    </div>
+                <br />
+                    <!--<h4 class="mt-0 header-title">Most Commonly Asked Questions</h4>
+                    <p class="text-muted">
+                        Anim pariatur cliche reprehenderit,
+                        enim eiusmod high life accusamus terry richardson ad squid.
+                    </p>-->
+                <div class="accordion" id="accordionExample-faq">
+                    <div class="table-responsive">
+                        <table class="table table-bordered mb-0 table-centered">
+                            <thead>
+                                <tr>
+                                    <th class="text-center" style="width:5%;">S/N</th>
+                                    <th class="text-center" style="width:8%;">User Name</th>
+                                    <th class="text-center" style="width:17%;">Ticket Time</th>
+                                    <th class="text-center" style="width:55%;">Ticket Detail</th>
+                                    <th class="text-center" colspan="3" style="width:15%;">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="aTicket in TicketList track by $index">
+                                    <td class="text-center">{{$index + 1}}</td>
+                                    <td class="text-center">{{aTicket.UserName}}</td>
+                                    <td class="text-center">{{aTicket.DateTame}}</td>
+                                    <td>
+                                        <div class="card-header row" id="{{aTicket.Heading}}">
+                                            <div class="col-md-10">
+                                                <h5 class="my-0">
+                                                    <button class="btn btn-link collapsed ml-4 align-self-center shadow-none" type="button" data-toggle="collapse" data-target="#{{aTicket.Collapse}}" aria-expanded="false" aria-controls="{{aTicket.Collapse}}" ng-click="DetailsDataLoad(aTicket)">
+                                                        {{aTicket.Subject}}
+
+                                                    </button>
+
+                                                </h5>
+
+                                            </div>
+                                        </div>
+                                        <div id="{{aTicket.Collapse}}" class="collapse" aria-labelledby="{{aTicket.Heading}}" data-parent="#accordionExample-faq">
+                                            <div class="card-body">
+                                                {{aTicket.Details}}
+                                            </div>
+                                        </div>
+                                    </td>
+                                    
+                                    <td class="text-center">
+                                        <button type="button" class="btn btn-gradient-primary btn-round btn-custom btn-block waves-effect waves-light BtnWidth" ng-click="ManageTicket()" data-animation="bounce">
+                                            <i class="fas fa-eye mr-2"></i>View
+                                            <!--<i class="fas fa-feather-alt mr-2"></i>-->
+                                        </button>
+                                    </td>
+                                    
+                                </tr>
+
+                            </tbody>
+                        </table><!--end /table-->
+                    </div>
+                    <!--<div class="card shadow-none border mb-1" ng-repeat="aTicket in TicketList track by $index">
+                        <div class="card-header row" id="{{aTicket.Heading}}">
+                            <div class="col-md-10">
+                                <h5 class="my-0">
+                                    <button class="btn btn-link collapsed ml-4 align-self-center shadow-none" type="button" data-toggle="collapse" data-target="#{{aTicket.Collapse}}" aria-expanded="false" aria-controls="{{aTicket.Collapse}}" ng-click="DetailsDataLoad(aTicket)">
+                                        {{aTicket.Subject}}
+
+                                    </button>
+
+                                </h5>
+
+                            </div>
+                            <div class="col-md-2">
+                                <h5 class="my-0">
+                                    <button type="button" class="btn btn-gradient-primary btn-round btn-custom btn-block waves-effect waves-light BtnWidth" ng-click="ManageTicket()" data-animation="bounce">
+                                        <i class="fas fa-eye mr-2"></i>View-->
+                                        <!--<i class="fas fa-feather-alt mr-2"></i>-->
+                                    <!--</button>
+
+                                </h5>
+                            </div>
+
+
+                        </div>
+                        <div id="{{aTicket.Collapse}}" class="collapse" aria-labelledby="{{aTicket.Heading}}" data-parent="#accordionExample-faq">
+                            <div class="card-body">
+                                {{aTicket.Details}}
+                            </div>
+                        </div>
+                    </div>-->
+
+                </div><!--end accordion-->
+                </div><!--end card-body-->
+            </div><!--end card-->
+        </div><!--end col-->
+    </div><!--end row-->
+
+
+</form>
+

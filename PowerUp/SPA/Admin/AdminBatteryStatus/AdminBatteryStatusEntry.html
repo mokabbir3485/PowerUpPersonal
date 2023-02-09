@@ -1,0 +1,90 @@
+﻿<style>
+    .btnPort {
+        width: 150px;
+        height: 100px;
+        margin: 5px;
+        border-radius: 5px;
+        text-align: center;
+        font-weight: bold;
+        margin: 10px;
+    }
+
+        .btnPort p {
+            /*font-weight: bold;*/
+            margin-top: 10px;
+            line-height: 2px;
+        }
+</style>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="page-title-box">
+            <div class="float-right">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">Power Up</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">Admin</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">Battery Status</a></li>
+                    <!--<li class="breadcrumb-item active">Battery Status</li>-->
+                </ol>
+            </div>
+            <h4 class="page-title">Battery Status </h4>
+        </div><!--end page-title-box-->
+    </div><!--end col-->
+</div><!--end row-->
+<!-- end page title end breadcrumb -->
+<div class="row">
+    <div class="col-lg-12">
+    
+        <div class="card">
+           
+            <div class="card-body">
+                <!--<h4 class="page-title">Battery Status</h4>-->
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <select id="ddlLocation" class="form-control" ng-model="ddlLocation" ng-options="Location.LocationName for Location in LocationList track by Location.LocationId" ng-change="getSwapStation(ddlLocation.LocationId);">
+                                <option value="" hidden>Select Location</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <select id="ddlSwapStation" class="form-control" ng-model="ddlSwapStation" ng-options="SwapStation.StationName for SwapStation in SwapStationList track by SwapStation.SwapStationId" ng-change="ShowPlug(ddlSwapStation);">
+                                <option value="" hidden>Select Swap Station</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 " ng-show="isShowPlug">
+
+                        <div class="row" style="padding:10px">
+                            <div class="table-responsive">
+                                <div class="col-12 col-xs-12 col-sm-6 col-md-3 col-lg-3" style="float: left;" ng-repeat="aPort in PortList">
+                                    <button class="btn btn-{{aPort.Color}} btnPort" ng-click="PortDetail(aPort);"><p>{{aPort.PortName}}</p> <p>{{aPort.BatteryName}}</p><p>{{aPort.Status}}</p><p>Charging: {{aPort.Charge}}%</p><p> {{aPort.Voltage}}V {{aPort.Amp}}mA</p></button>
+                                </div>
+                            </div><!--end /tableresponsive-->
+                            <br />
+                        </div>
+
+
+                    </div>
+                </div>
+            </div><!--end card-body-->
+        </div><!--end card-->
+    </div><!--end col-->
+
+</div>
+
+<script>
+    $("#ddlLocation").select2({
+        placeholder: "Select Location",
+        dropdownAutoWidth: false
+    })
+    $("#ddlSwapStation").select2({
+        placeholder: "Select Swap Station",
+        dropdownAutoWidth: false
+    })
+</script>

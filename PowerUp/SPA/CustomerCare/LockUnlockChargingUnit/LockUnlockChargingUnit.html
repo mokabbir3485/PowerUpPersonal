@@ -1,0 +1,133 @@
+﻿<style>
+    @media only screen and (min-device-width : 200px) and (max-device-width : 767px) {
+        /* For mobile phones: */
+        [class*="col-"] {
+            width: 100%;
+            margin: 5px;
+        }
+
+        .BtnWidth {
+            width: 100%;
+            margin: 2px;
+        }
+
+        #navigationUrlHide {
+            display: none;
+        }
+    }
+</style>
+
+<!-- For SignalR Start -->
+<!-- JQuery Used From spa Bundle Version 3.4.1 -->
+<!--<script src="../../../Scripts/jquery-2.2.3.min.js"></script>-->
+<script src="../../../Scripts/jquery.signalR-2.4.3.min.js"></script>
+<script src="/signalr/hubs"></script>
+<!-- For SignalR End -->
+<link href="../../../Content/Toggle.css" rel="stylesheet" />
+<div class="row">
+    <div class="col-sm-12">
+        <div class="page-title-box">
+            <div class="float-right">
+                <ol class="breadcrumb" id="navigationUrlHide">
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">Power Up</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">Customer Care</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">Lock Unlock Doors</a></li>
+                    <!--<li class="breadcrumb-item active">Lock Unlock Locker</li>-->
+                </ol>
+            </div>
+            <h4 class="page-title">Lock Unlock Doors</h4>
+        </div><!--end page-title-box-->
+    </div><!--end col-->
+</div><!--end row-->
+<!-- end page title end breadcrumb -->
+<div class="col-md-12">
+
+    <div class="card">
+        <div class="card-body">
+
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <select id="ddlLocation" class="form-control" ng-model="ddlLocation" ng-options="Location.LocationName for Location in LocationList track by Location.id" ng-change="getSwapStation(ddlLocation.id);">
+                                    <option value="" hidden>Select Location</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <select id="ddlSwapStation" class="form-control" ng-model="ddlSwapStation" ng-options="SwapStation.StationName for SwapStation in SwapStationList track by SwapStation.SwapStationId" ng-change="getLockerChargingUnit(ddlSwapStation.SwapStationId);">
+                                    <option value="" hidden>Select Locker</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-prepend">
+                            <button type="button" class="btn btn-gradient-primary"><i class="fas fa-search"></i></button>
+                        </span>
+                        <input type="text" id="example-input1-group2" name="example-input1-group2" class="form-control" placeholder="Search ">
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="table-responsive">
+                <div class="col-md-3" style="float: left;" ng-repeat="aDoor in DoorList">
+
+                    <div class="media setting-card">
+                        <span class="sett-card-icon set-icon-{{aDoor.iconColor}}">
+                            <!--<i class="mdi mdi-google-chrome"></i>-->
+                            <i class="" style="font-size: 11px;"><b>{{aDoor.StatusDetail}}</b></i>
+                        </span>
+                        
+                        <!--<span class="">Locked</span>-->
+                        <div class="media-body align-self-center">
+                            <div class="setting-detail">
+                                <h3 class="mb-0 mt-0">{{aDoor.DoorName}}</h3>
+                                <p class="text-muted mb-0">Used for withdrawals and security modifications</p>
+                            </div>
+                            <div class="mt-2">
+                                <!--<div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-outline-dark btn-sm {{aChargingUnit.LockStatus}}">
+                    <input type="radio" name="options" id="option5" value="1" checked> Lock
+                </label>
+
+                <label class="btn btn-outline-dark btn-sm {{aChargingUnit.UnlockStatus}}">
+                    <input type="radio" name="options" value="0" id="option6"> UnLock
+                </label>
+            </div>-->
+                                <!--end btn-group-->
+
+                                <div class="can-toggle demo-rebrand-1">
+                                    <input id="{{aDoor.id}}" type="checkbox" ng-model="aDoor.Status" ng-click="SelectDoor(aDoor)" ng-change="ChangeStatus(aDoor);">
+                                    <label for="{{aDoor.id}}">
+                                        <!--<span class="">Locked</span>-->
+                                        <div class="can-toggle__switch" data-checked="&nbsp" data-unchecked="&nbsp"></div>
+
+                                    </label>
+                                </div>
+
+
+                            </div> <!--end /div-->
+                        </div><!--end media body-->
+                    </div><!--end media-->
+                    <br />
+                </div>
+            </div><!--end /tableresponsive-->
+        </div><!--end card-body-->
+    </div><!--end card-->
+</div> <!-- end col -->
+<script>
+    $("#ddlSwapStation").select2({
+        placeholder: "Select Swap Station",
+        dropdownAutoWidth: false
+    });
+    $("#ddlLocation").select2({
+        placeholder: "Select Location",
+        dropdownAutoWidth: false
+    });
+</script>

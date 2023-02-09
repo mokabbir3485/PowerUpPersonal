@@ -1,0 +1,64 @@
+﻿<style>
+    #map {
+        height: 700px;
+        width: 100%;
+    }
+
+    #floating-panel {
+        position: absolute;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        border: 1px solid #999;
+        text-align: center;
+        /*font-family:'Segoe UI'*/
+        line-height: 30px;
+        padding-left: 10px;
+    }
+</style>
+<style>
+
+    @media only screen and (min-device-width : 200px) and (max-device-width : 767px) {
+        /* For mobile phones: */
+        /*   [class*="col-"] {
+            width: 100%;
+            margin: 5px;
+        }
+
+        .BtnWidth {
+            width: 100%;
+        }*/
+
+        #navigationUrlHide {
+            display: none;
+        }
+    }
+</style>
+
+<div class="row printHidden" ng-hide="">
+    <div class="col-sm-12">
+        <div class="page-title-box">
+            <div class="float-right">
+                <ol class="breadcrumb" id="navigationUrlHide">
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">Power up</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">User</a></li>
+                    <li class="breadcrumb-item active">Swap Station  Map</li>
+                </ol>
+            </div>
+            <h4 class="page-title">Swap Station Map</h4>
+        </div><!--end page-title-box-->
+    </div><!--end col-->
+</div>
+<div class="col-lg-12">
+  
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <!--<div id="map"></div>-->
+                <img src="../../../Content/assets/images/ExmpleMap.png" style="width:100%" />
+            </div>
+        </div><!--end card-body-->
+    </div><!--end card-->
+</div> <!-- end col -->
+
+<!--<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFoVxNoen7hclOXbthAz1WYS7L378A0Mw&callback=initMap"></script>-->

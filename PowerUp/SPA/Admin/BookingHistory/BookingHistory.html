@@ -1,0 +1,145 @@
+﻿<style>
+    @media only screen and (min-device-width : 200px) and (max-device-width : 767px) {
+
+        #navigationUrlHide {
+            display: none;
+        }
+
+        .BtnWidth {
+            width: 100%;
+            margin: 4px;
+        }
+
+        .DivMargin {
+            margin-top: 5px;
+        }
+    }
+</style>
+<form name="AddBatteryForm">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-title-box">
+                <div class="float-right">
+                    <ol class="breadcrumb" id="navigationUrlHide">
+                        <li class="breadcrumb-item"><a href="javascript:void(0);">Power Up</a></li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0);">Admin</a></li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0);">Booking History</a></li>
+
+                    </ol>
+                </div>
+                <h4 class="page-title">Booking History</h4>
+            </div><!--end page-title-box-->
+        </div><!--end col-->
+    </div>
+    <!-- end page title end breadcrumb -->
+    <div class="container-fluid">
+
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                   
+                    <h3 class="mt-0 header-title mdi mdi-format-list-bulleted">Booking History</h3>
+                    <hr />
+                    <div class="row">
+                        <div class="col-md-3 DivMargin">
+                            <div class="input-group">
+                                <span class="input-group-prepend">
+                                    <button type="button" class="btn btn-gradient-primary"><i class="fas fa-calendar"></i></button>
+                                </span>
+                                <input type="text" id="date-start" name="example-input1-group2" class="form-control" placeholder="Form Date" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-3 DivMargin">
+                            <div class="input-group">
+                                <span class="input-group-prepend">
+                                    <button type="button" class="btn btn-gradient-primary"><i class="fas fa-calendar"></i></button>
+                                </span>
+                                <input type="text" id="date-end" name="example-input1-group2" class="form-control" placeholder="To Date" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-3 DivMargin">
+                            <div class="input-group">
+                                <span class="input-group-prepend">
+                                    <button type="button" class="btn btn-gradient-primary"><i class="fas fa-search"></i></button>
+                                </span>
+                                <input type="text" id="example-input1-group2" name="example-input1-group2" class="form-control" placeholder="Search">
+                            </div>
+                        </div>
+                        <div class="col-md-3 DivMargin text-right">
+                            <button class="btn btn-danger BtnWidth">Clear</button>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <div class="table-responsive">
+                        <table class="table table-bordered mb-0 table-centered">
+                            <thead>
+                                <tr>
+                                    <th class="text-center"></th>
+                                    <th class="text-center">S/N</th>
+                                    <th class="text-center">Booking Id</th>
+                                    <th class="text-center">Booking Date</th>
+                                    <th class="text-center">Booked By</th>
+                                </tr>
+                            </thead>
+                            
+                            <tbody ng-repeat="aBooking in BookingList track by $index">
+                                <tr>
+                                    <td class="text-center"><label><i ng-show="!aBooking.DisplaySta " class="fa fa-plus-square"></i><i ng-show="aBooking.DisplaySta " class="fa fa-minus-square"></i><input style="visibility:hidden;" type="checkbox" ng-model="aBooking.DisplaySta" /></label></td>
+                                    <td class="text-center">
+                                        {{$index + 1}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{aBooking.BookingId}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{aBooking.BookingDate}}
+                                    </td>
+                                    <td class="text-center">
+                                        {{aBooking.BookedBy}}
+                                    </td>
+
+                                </tr>
+                                <tr ng-show="aBooking.DisplaySta ">
+                                    <td></td>
+                                    <td colspan="5">
+                                        <table style="width: 100%" class="responstable table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center">Battery Name</th>
+                                                    <th class="text-center">Battery Model</th>
+                                                    <th class="text-center">Voltage</th>
+                                                    <th class="text-center">Amp</th>
+                                                </tr>
+                                            </thead>
+                                            
+                                                
+                                            <tr class="HoverTable">
+                                                <td class="text-center">
+                                                    {{aBooking.BatteryName}}
+                                                </td>
+                                                    
+                                                <td class="text-center">
+                                                    {{aBooking.BatteryModel}}
+                                                </td>
+                                                <td class="text-center">
+                                                    {{aBooking.Voltage}}
+                                                </td>
+                                                <td class="text-center">
+                                                    {{aBooking.Amp}}
+                                                </td>
+
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table><!--end /table-->
+                    </div><!--end /tableresponsive-->
+                </div><!--end card-body-->
+            </div><!--end card-->
+        </div> <!-- end col -->
+    </div> <!-- end row -->
+
+</form>

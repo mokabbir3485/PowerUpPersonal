@@ -1,0 +1,204 @@
+﻿<style>
+    @media only screen and (min-device-width : 200px) and (max-device-width : 767px) {
+
+        #navigationUrlHide {
+            display: none;
+        }
+         .BtnWidth {
+            width: 100%;
+        /*    margin: 4px;*/
+        }
+        .DivMargin {
+            margin-top: 5px;
+        }
+    }
+
+   
+</style>
+<form name="AddBatteryForm">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-title-box">
+                <div class="float-right">
+                    <ol class="breadcrumb" id="navigationUrlHide">
+                        <li class="breadcrumb-item"><a href="javascript:void(0);">Power Up</a></li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0);">Admin</a></li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0);">Add Battery</a></li>
+
+                    </ol>
+                </div>
+                <h4 class="page-title">Add Battery</h4>
+            </div><!--end page-title-box-->
+        </div><!--end col-->
+    </div>
+    <!-- end page title end breadcrumb -->
+    <div class="container-fluid">
+
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="header-title">Add Battery</h4>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="input-group">
+                                <input type="text" id="BatteryNameText" name="BatteryName" class="form-control" ng-model="Battery.BatteryName" placeholder="Battery Name">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="input-group">
+                                <input type="text" id="BatteryCodeText" name="BatteryCode" class="form-control" ng-model="Battery.BatteryCode" placeholder="Battery Code">
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-3">
+                            <div class="input-group">
+                                <input type="text" id="BatteryModelText" name="BatteryModel" class="form-control" ng-model="Battery.BatteryModel" placeholder="Battery Model">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="input-group">
+                                <input type="text" id="QRCode" name="QRCode" class="form-control" ng-model="Battery.QRCode" placeholder="QR Code">
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    <br />
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="input-group">
+                                <input type="text" id="MacAddressText" name="MacAddress" class="form-control" ng-model="Battery.MacAddress" placeholder="Mac Address">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="input-group">
+                                <input type="text" id="VoltageText" name="Voltage" class="form-control" ng-model="Battery.Voltage" placeholder="Voltage">
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-3">
+                            <div class="input-group">
+                                <input type="text" id="AmpText" name="AmpText" class="form-control" ng-model="Battery.Amp" placeholder="Amper">
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <div class="row">
+                        <div class="col-6 col-xs-6 col-sm-6 col-md-2 col-lg-2">
+                            <div class="row">
+                                <div class="col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                    <button class="btn btn-success" style="padding:5px;" ng-click="Save()"> Save</button>
+                                </div>
+                                <div class="col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                    <button class="btn btn-danger" style="padding:5px;" ng-click="batteryReset()"> Reset</button>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="col-6 col-xs-6 col-sm-6 col-md-2 col-lg-2">
+                            <button class="btn btn-Info" style="padding:5px;" ng-click="FillData();"> Fill In Box</button>
+                        </div>
+
+                    </div>
+                    
+                    <br />
+                    <hr />
+                    <h3 class="mt-0 header-title mdi mdi-format-list-bulleted"> Battery List</h3>
+                    <hr />
+                    <div class="row">
+                        <div class="col-md-3 DivMargin" >
+                            <div class="input-group">
+                                <span class="input-group-prepend">
+                                    <button type="button" class="btn btn-gradient-primary"><i class="fas fa-calendar"></i></button>
+                                </span>
+                                <input type="text" id="date-start" name="example-input1-group2" class="form-control" placeholder="Form Date" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-3 DivMargin">
+                            <div class="input-group">
+                                <span class="input-group-prepend">
+                                    <button type="button" class="btn btn-gradient-primary"><i class="fas fa-calendar"></i></button>
+                                </span>
+                                <input type="text" id="date-end" name="example-input1-group2" class="form-control" placeholder="To Date" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-4 DivMargin">
+                            <div class="input-group">
+                                <span class="input-group-prepend">
+                                    <button type="button" class="btn btn-gradient-primary"><i class="fas fa-search"></i></button>
+                                </span>
+                                <input type="text" id="example-input1-group2" name="example-input1-group2" class="form-control" placeholder="Search">
+                            </div>
+                        </div>
+                        <div class="col-md-2 DivMargin ">
+                            <button class="btn btn-danger BtnWidth" style="width:100%" >Clear</button>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <div class="table-responsive">
+                        <table class="table table-bordered mb-0 table-centered">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">S/N</th>
+                                    <th class="text-center">Name</th>
+                                    <th class="text-center">Code</th>
+                                    <th class="text-center">Model</th>
+                                    <th class="text-center">Mac Address</th>
+                                    <th class="text-center">Voltage</th>
+                                    <th class="text-center">Ampere</th>
+
+                                    <th class="text-center" colspan="3">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="aBattery in BatteryList track by aBattery.BatteryId">
+                                    <td class="text-center">{{$index + 1}}</td>
+                                    <td class="text-center">{{aBattery.BatteryName}}</td>
+                                    <td class="text-center">{{aBattery.BatteryCode}}</td>
+                                    <td class="text-center">{{aBattery.BatteryModel}}</td>
+                                    <td class="text-center">{{aBattery.MacAddress}}</td>
+                                    <td class="text-center">{{aBattery.Voltage}}</td>
+                                    <td class="text-center">{{aBattery.Amp}}</td>
+                                    <td class="text-center" style="border-right: hidden">
+                                        <button class="btn btn-success" ng-click="Sel()"> <i class="fa fa-edit"></i>Edit</button>
+
+                                    </td>
+                                    <td class="text-center" style="border-right:hidden">
+                                        <button class="btn btn-danger" ng-click="Del()"><i class="fa fa-trash"></i> Delete</button>
+                                    </td>
+                                    <td class="text-center" >
+                                        <button class="btn btn-primary" ng-click="Rpt()"><i class="fa fa-print"></i> Report</button>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table><!--end /table-->
+                    </div><!--end /tableresponsive-->
+                </div><!--end card-body-->
+            </div><!--end card-->
+        </div> <!-- end col -->
+    </div> <!-- end row -->
+
+</form>
+
+<script>
+    
+    $("#BatteryCode").select2({
+        placeholder: "Battery Code",
+
+        dropdownAutoWidth: false
+    });
+
+    $("#BatteryLocation").select2({
+        placeholder: "Battery Location",
+        dropdownAutoWidth: false
+    });
+</script>

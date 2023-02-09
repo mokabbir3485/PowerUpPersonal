@@ -1,0 +1,121 @@
+﻿
+<style>
+    @media only screen and (min-device-width : 200px) and (max-device-width : 767px) {
+        /* For mobile phones: */
+        [class*="col-"] {
+            width: 100%;
+            margin: 5px;
+        }
+
+        .BtnWidth {
+            width: 100%;
+            margin: 2px;
+        }
+
+        #navigationUrlHide {
+            display: none;
+        }
+    }
+</style>
+<link href="../../../Content/Toggle.css" rel="stylesheet" />
+<div class="row">
+    <div class="col-sm-12">
+        <div class="page-title-box">
+            <div class="float-right">
+                <ol class="breadcrumb" id="navigationUrlHide">
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">Power Up</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">Customer Care</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">Enable Disable Charging Unit</a></li>
+                    <!--<li class="breadcrumb-item active">Lock Unlock Locker</li>-->
+                </ol>
+            </div>
+            <h4 class="page-title">Enable Disable Charging Unit</h4>
+        </div><!--end page-title-box-->
+    </div><!--end col-->
+</div><!--end row-->
+<!-- end page title end breadcrumb -->
+<div class="col-md-12">
+
+    <div class="card">
+        <div class="card-body">
+
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <select id="ddlLocation" class="form-control" ng-model="ddlLocation" ng-options="Location.LocationName for Location in LocationList track by Location.id" ng-change="getSwapStation(ddlLocation.id);">
+                                    <option value="" hidden>Select Location</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <select id="ddlSwapStation" class="form-control" ng-model="ddlSwapStation" ng-options="SwapStation.StationName for SwapStation in SwapStationList track by SwapStation.SwapStationId" ng-change="getLockerChargingUnit(ddlSwapStation.SwapStationId);">
+                                    <option value="" hidden>Select Swap Station</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-prepend">
+                            <button type="button" class="btn btn-gradient-primary"><i class="fas fa-search"></i></button>
+                        </span>
+                        <input type="text" id="example-input1-group2" name="example-input1-group2" class="form-control" placeholder="Search ">
+                    </div>
+                </div>
+            </div>
+        <br />
+            <div class="table-responsive">
+                <div class="col-md-3" style="float: left;" ng-repeat="aChargingUnit in ChargingUnitList">
+
+                    <div class="media setting-card">
+                        <span class="sett-card-icon set-icon-success">
+                            <i class="mdi mdi-google-chrome"></i>
+                        </span>
+                        <div class="media-body align-self-center">
+                            <div class="setting-detail">
+                                <h3 class="mb-0 mt-0">{{aChargingUnit.UnitName}}</h3>
+                                <p class="text-muted mb-0">Used for withdrawals and security modifications</p>
+                            </div>
+                            <div class="mt-2">
+                                <!--<div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                    <label class="btn btn-outline-dark btn-sm {{aChargingUnit.LockStatus}}">
+                                        <input type="radio" name="options" id="option5" checked> Enable
+                                    </label>
+
+                                    <label class="btn btn-outline-dark btn-sm {{aChargingUnit.UnlockStatus}}">
+                                        <input type="radio" name="options" id="option6"> Disable
+                                    </label>
+                                </div>end btn-group-->
+
+                                <div class="can-toggle demo-rebrand-1">
+                                    <input id="{{aChargingUnit.id}}" type="checkbox" ng-model="aChargingUnit.Status" ng-click="SelectDoor(aChargingUnit)" ng-change="test()">
+                                    <label for="{{aChargingUnit.id}}">
+                                        <div class="can-toggle__switch" data-checked="Enable" data-unchecked="Disable"></div>
+                                        <!--<div class="can-toggle__label-text">.can-toggle.demo-rebrand-1</div>-->
+                                    </label>
+                                </div>
+
+                            </div> <!--end /div-->
+                        </div><!--end media body-->
+                    </div><!--end media-->
+                    <br />
+                </div>
+            </div><!--end /tableresponsive-->
+        </div><!--end card-body-->
+    </div><!--end card-->
+</div> <!-- end col -->
+<script>
+    $("#ddlSwapStation").select2({
+        placeholder: "Select Swap Station",
+        dropdownAutoWidth: false
+    });
+    $("#ddlLocation").select2({
+        placeholder: "Select Location",
+        dropdownAutoWidth: false
+    });
+</script>
